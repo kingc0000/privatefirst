@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<!-- # The five logging levels used by Log are (in order):
+#
+#   1. DEBUG (the least serious)
+#   2. INFO
+#   3. WARN
+#   4. ERROR
+#   5. FATAL (the most serious)
+ -->
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<appender name="CORE" class="org.apache.log4j.RollingFileAppender">
+		<!-- The active file to log to -->
+	<param name="File" value="../kekeinfo/logs/core.log" />
+	<param name="MaxFileSize" value="10000KB"/>
+	<param name="Append" value="true" />
+	<param name="Encoding" value="UTF-8" />
+	<param name="Threshold" value="info" />
+	<layout class="org.apache.log4j.PatternLayout">
+		<!-- The log message pattern -->
+		<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} [%5p] (%F:%L) [%M] - %m%n" />
+	</layout>
+</appender>
+       
+<logger name="com.kekeinfo.core" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="CORE" />
+</logger>
+
+<appender name="WEB" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../kekeinfo/logs/shop.log" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Threshold" value="info" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} [%5p] (%F:%L) [%M] - %m%n" />
+		</layout>
+</appender>
+
+<!-- root的作用是收集下面所有反馈上来的信息流并根据配置在root中appender进行输出，只要你在looger中配置了additivity="false"，就不会反馈到root中  -->  
+<logger name="com.kekeinfo.web" additivity="true">
+		<level value="info"/>
+		<appender-ref ref="WEB" />
+</logger>
+
+<appender name="MODBUS" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="../kekeinfo/logs/modbus.log" />
+		<param name="Append" value="true" />
+		<param name="Encoding" value="UTF-8" />
+		<param name="Threshold" value="debug" />
+
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} [%5p] (%F:%L) [%M] - %m%n" />
+		</layout>
+</appender>
+
+<logger name="com.serotonin.modbus4j" additivity="true">
+		<level value="debug"/>
+		<appender-ref ref="MODBUS" />
+</logger>
+
+<appender name="console" class="org.apache.log4j.ConsoleAppender">
+	<param name="Target" value="System.out"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss} [%5p] (%F:%L) [%M] - %m%n"/>
+		</layout>
+</appender>
+
+<category name="com.kekeinfo.web.services.controller.system.ModbusListener">
+  <priority value="debug" />
+  <appender-ref ref="CONSOLE" />
+</category>
+<category name="com.serotonin.modbus4j">
+  <priority value="debug" />
+  <appender-ref ref="CONSOLE" />
+</category>
+<root>
+	<priority value="info" />
+	<appender-ref ref="console" />
+</root>
+<!-- <category name="org.springframework">
+  <priority value="debug" />
+  <appender-ref ref="CONSOLE" />
+</category> -->
+<!-- <category name="org.springframework">
+  <priority value="info" />
+  <appender-ref ref="CONSOLE" />
+</category>
+<category name="org.hibernate">
+  <priority value="info" />
+  <appender-ref ref="CONSOLE" />
+</category> -->
+</log4j:configuration>

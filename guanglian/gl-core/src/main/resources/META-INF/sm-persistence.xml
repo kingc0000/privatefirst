@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="gl-unit">
+		<class>com.kekeinfo.core.business.user.model.User</class>
+	    <class>com.kekeinfo.core.business.camera.model.Camera</class>
+	    <class>com.kekeinfo.core.business.constructionsite.model.ConstructionSite</class>	
+	    <class>com.kekeinfo.core.business.constructionsite.model.ProjectBase</class>
+	    <class>com.kekeinfo.core.business.project.model.Project</class>	
+	    <class>com.kekeinfo.core.business.department.model.Department</class>	
+	    <class>com.kekeinfo.core.business.department.model.DepartmentNode</class>	
+	    <class>com.kekeinfo.core.business.zone.model.Zone</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.ProjectImg</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.ImgDewartWell</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.ImgDredgWell</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.ImgObservWell</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.ImgRechargeWell</class>
+
+		
+		<class>com.kekeinfo.core.business.system.model.SystemConfiguration</class>
+		<class>com.kekeinfo.core.business.system.model.IntegrationModule</class>
+		<class>com.kekeinfo.core.business.system.model.SystemNotification</class>
+		
+		<class>com.kekeinfo.core.business.user.model.Group</class>
+		<class>com.kekeinfo.core.business.user.model.Permission</class>
+		<class>com.kekeinfo.core.business.common.model.BasedataType</class>
+		<class>com.kekeinfo.core.business.daily.model.Daily</class>
+		<class>com.kekeinfo.core.business.daily.model.DailyImage</class>
+		<class>com.kekeinfo.core.business.daily.model.WellCondition</class>
+		
+		<class>com.kekeinfo.core.business.pumpwell.model.Pumpwell</class>
+		<class>com.kekeinfo.core.business.dewatering.model.Dewatering</class>
+		<class>com.kekeinfo.core.business.invertedwell.model.Invertedwell</class>
+		<class>com.kekeinfo.core.business.observewell.model.Observewell</class>
+		<class>com.kekeinfo.core.business.deformmonitor.model.Deformmonitor</class>
+		<class>com.kekeinfo.core.business.designdoc.model.Designdoc</class>
+		<class>com.kekeinfo.core.business.dreport.model.Dreport</class>
+		<class>com.kekeinfo.core.business.dreport.model.Dopinion</class>
+		<class>com.kekeinfo.core.business.dreport.model.Dattach</class>
+		<class>com.kekeinfo.core.business.dreport.model.AuditRule</class>
+		<class>com.kekeinfo.core.business.monitordata.model.EmonitorData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.IwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.OwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.PwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.DewellData</class>
+		
+		<class>com.kekeinfo.core.business.monitordata.model.HemonitorData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.HiwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.HowellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.HpwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.HdewellData</class>
+		
+		<class>com.kekeinfo.core.business.monitordata.model.WemonitorData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.WiwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.WowellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.WpwellData</class>
+		<class>com.kekeinfo.core.business.monitordata.model.WdewellData</class>
+		
+		<class>com.kekeinfo.core.business.gateway.model.Gateway</class>
+		
+		<class>com.kekeinfo.core.business.pointlink.model.DeformLink</class>
+		<class>com.kekeinfo.core.business.pointlink.model.DewateringLink</class>
+		<class>com.kekeinfo.core.business.pointlink.model.InvertedLink</class>
+		<class>com.kekeinfo.core.business.pointlink.model.ObserveLink</class>
+		<class>com.kekeinfo.core.business.pointlink.model.PumpLink</class>
+		
+		<class>com.kekeinfo.core.business.pointinfo.model.DeformInfo</class>
+		<class>com.kekeinfo.core.business.pointinfo.model.DewateringInfo</class>
+		<class>com.kekeinfo.core.business.pointinfo.model.InvertedInfo</class>
+		<class>com.kekeinfo.core.business.pointinfo.model.ObserveInfo</class>
+		<class>com.kekeinfo.core.business.pointinfo.model.PumpInfo</class>
+		
+		<class>com.kekeinfo.core.business.report.model.Report</class>
+		<class>com.kekeinfo.core.business.report.model.Rpwell</class>
+		<class>com.kekeinfo.core.business.report.model.Rdewell</class>
+		<class>com.kekeinfo.core.business.report.model.Rewell</class>
+		<class>com.kekeinfo.core.business.report.model.Riwell</class>
+		<class>com.kekeinfo.core.business.report.model.Rowell</class>
+		
+		<class>com.kekeinfo.core.business.content.model.Content</class>	
+		<class>com.kekeinfo.core.business.image.model.Images</class>
+		<class>com.kekeinfo.core.business.image.model.Wellimages</class>
+		
+		<class>com.kekeinfo.core.business.preview.model.Preview</class>
+		<class>com.kekeinfo.core.business.preview.model.PreviewImage</class>
+		<class>com.kekeinfo.core.business.monitor.model.Monitor</class>	
+		<class>com.kekeinfo.core.business.guard.model.Guard</class>	
+		<class>com.kekeinfo.core.business.equipment.model.Equip</class>	
+		<class>com.kekeinfo.core.business.attach.model.Attach</class>	
+		<class>com.kekeinfo.core.business.monitoreqip.model.MonitorEqip</class>	
+		<class>com.kekeinfo.core.business.daily.model.MonitorDaily</class>
+		<class>com.kekeinfo.core.business.daily.model.MonitorDailyImage</class>		
+		
+		<class>com.kekeinfo.core.business.last.model.CsiteLast</class>
+		<class>com.kekeinfo.core.business.last.model.MonitLast</class>
+		<class>com.kekeinfo.core.business.last.model.GuardLast</class>
+		<class>com.kekeinfo.core.business.monitor.model.MonitorUser</class>	
+		<class>com.kekeinfo.core.business.guardeqip.model.GuardEqip</class>
+		<class>com.kekeinfo.core.business.monitor.substrate.model.SubStrate</class>
+		<class>com.kekeinfo.core.business.monproblem.model.MonProblem</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.Surface</class>	
+		<class>com.kekeinfo.core.business.monitor.surface.model.WaterLine</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.Building</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.UpRight</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.RingBeam</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.HiddenLine</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.SupAxial</class>
+		<class>com.kekeinfo.core.business.monitor.surface.model.Displacement</class>
+		<class>com.kekeinfo.core.business.monitor.oblique.model.Oblique</class>
+		
+		<class>com.kekeinfo.core.business.monitor.oblique.model.Depth</class>
+		
+		<class>com.kekeinfo.core.business.monitor.data.model.SurfaceData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.WaterLineData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.BuildingData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.UpRightData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.RingBeamData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.HiddenLineData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.SupAxialData</class>
+		<class>com.kekeinfo.core.business.monitor.data.model.DisplacementData</class>
+		<class>com.kekeinfo.core.business.monitor.oblique.model.ObliqueData</class>	
+		
+		<class>com.kekeinfo.core.business.mreport.model.RSurfaceData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RMreport</class>
+		<class>com.kekeinfo.core.business.mreport.model.RWaterLineData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RBuildingData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RUpRightData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RRingBeamData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RHiddenLineData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RSupAxialData</class>
+		<class>com.kekeinfo.core.business.mreport.model.RDisplacementData</class>
+		<class>com.kekeinfo.core.business.monitor.model.MPoint</class>
+		<class>com.kekeinfo.core.business.monitoreqip.model.MpointEquip</class>
+		<class>com.kekeinfo.core.business.monitor.statistical.model.Mstatistical</class>
+		<class>com.kekeinfo.core.business.monitor.statistical.model.PointManager</class>
+		
+		<class>com.kekeinfo.core.business.guard.data.model.VerticalDisData</class>
+		<class>com.kekeinfo.core.business.guard.data.model.DiameterConvertData</class>
+		<class>com.kekeinfo.core.business.guard.data.model.HshiftData</class>
+		
+		<class>com.kekeinfo.core.business.guard.point.model.VerticalDis</class>
+		<class>com.kekeinfo.core.business.guard.point.model.Hshift</class>
+		<class>com.kekeinfo.core.business.guard.point.model.DiameterConvert</class>
+		<class>com.kekeinfo.core.business.appmessage.model.AMessage</class>
+		<class>com.kekeinfo.core.business.appmessage.model.MessageU</class>
+		<class>com.kekeinfo.core.business.job.model.GJob</class>
+		<class>com.kekeinfo.core.business.sign.model.Sign</class>
+		
+		<class>com.kekeinfo.core.business.xreport.model.XMreport</class>
+		<class>com.kekeinfo.core.business.xreport.model.ROblique</class>
+		<class>com.kekeinfo.core.business.xreport.model.RObliqueData</class>
+		
+		<class>com.kekeinfo.core.business.greport.model.Greport</class>
+		<class>com.kekeinfo.core.business.greport.model.RDiameterConvertData</class>
+		<class>com.kekeinfo.core.business.greport.model.RVerticalDisData</class>
+		<class>com.kekeinfo.core.business.greport.model.RHshiftData</class>
+		
+		<class>com.kekeinfo.core.business.daily.model.GuardDaily</class>
+		<class>com.kekeinfo.core.business.daily.model.GuardDailyImage</class>
+		<class>com.kekeinfo.core.business.gonproblem.model.GonProblem</class>
+		
+		<class>com.kekeinfo.core.business.monitor.model.MBaseType</class>
+		<class>com.kekeinfo.core.business.monitor.model.WaterLineType</class>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,88 @@
+{"menus":[
+{
+"menu":{
+"code":"csite", 
+"name":"项目管控",
+"icon":"fa-map-marker",
+"url":"/water/csite/wlist.html", 
+"role":"VIEW-PROJECT",
+"order":1
+}},
+{
+"menu":{
+"code":"projects", 
+"name":"项目管理",
+"icon":"fa-tasks",
+"url":"/water/csite/list.html", 
+"role":"EDIT-PROJECT",
+"order":2
+}},
+{
+"menu":{
+"code":"statistics", 
+"name":"统计/评论",
+"icon":"fa-rss",
+"url":"/water/statistics/statistics.html", 
+"role":"VIEW-PROJECT",
+"order":3,
+"menus":[
+			
+			{"menu":{
+				"code":"statistics","name":"项目统计","url":"/water/statistics/statistics.html","role":"EDIT-PROJECT","order":0
+			}},
+			{"menu":{
+				"code":"reviews","name":"评论管理","url":"/water/preview/list.html","role":"VIEW-PROJECT","order":1
+			}}
+]
+}},
+{
+"menu":{
+"code":"analysis", 
+"name":"计算分析",
+"icon":"fa-bar-chart-o",
+"url":"/water/computer/confined.html", 
+"role":"VIEW-PROJECT",
+"order":4,
+"menus":[
+			
+			{"menu":{
+				"code":"computer-confined","name":"承压水抗突涌计算","url":"/water/computer/confined.html","role":"VIEW-PROJECT","order":0
+			}},
+			{"menu":{
+				"code":"computer-aquifer","name":"均质含水层承压水基坑涌水量计算","url":"/water/computer/aquifer.html","role":"VIEW-PROJECT","order":1
+			}},
+			{"menu":{
+				"code":"computer-recharge","name":"承压含水层回灌井单井简易计算","url":"/water/computer/recharge.html","role":"VIEW-PROJECT","order":2
+			}}
+]
+}},
+{
+"menu":{
+"code":"report", 
+"name":"编制系统",
+"icon":"fa-pencil-square-o",
+"url":"/water/dreport/list.html", 
+"role":"EDIT-PROJECT",
+"order":5,
+"menus":[
+			
+			{"menu":{
+				"code":"dreport-list","name":"报告列表","url":"/water/dreport/list.html","role":"VIEW-PROJECT","order":0
+			}},
+			{"menu":{
+				"code":"dreport-audit","name":"报告审批","url":"/water/dreport/listApprove.html","role":"VIEW-PROJECT","order":1
+			}}
+]
+}},
+{
+"menu":{
+"code":"document", 
+"name":"文献库",
+"icon":"fa-book",
+"url":"/water/ddoc/list.html", 
+"role":"AUTH",
+"order":6
+}}
+]}
+
+

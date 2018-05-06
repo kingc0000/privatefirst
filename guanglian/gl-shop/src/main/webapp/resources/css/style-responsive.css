@@ -1,0 +1,330 @@
+@media (min-width: 980px) {
+    /*-----*/
+    .custom-bar-chart {
+        margin-bottom: 40px;
+    }
+
+}
+
+@media (max-width: 768px) and (max-width: 979px) {
+
+    .navbar-collapse, .navbar-collapse.in, .mega-menu ul li a {
+        width: 100%;
+    }
+
+    .mega-menu .navbar-nav {
+        height: 100%;
+    }
+
+    .mail-box .sm-side {
+        width: 30%;
+    }
+
+    .mail-box .lg-side {
+        width: 70%;
+    }
+
+
+}
+
+@media (max-width: 768px) {
+
+	
+	.navbar-toggle {
+    	display: block !important;
+ 	 }
+    .header {
+        position: absolute;
+    }
+
+	/*sidebar*/
+
+	#sidebar .check-div{
+		display: none;
+	}
+	.footerb{
+		display: block !important;
+	}
+	.site-footer {
+		display: none;
+	}
+    #sidebar {
+        display: none ;
+    }
+
+    .sidebar-close #sidebar {
+        overflow-y: auto;
+        position: absolute;
+        width: auto;
+        z-index: 1001;
+        display: block;
+    }
+
+
+    /* body container */
+    #middle-content {
+         margin:0px;
+         margin-bottom:17px;
+    }
+
+    #sidebar > ul > li > a > span {
+        line-height: 35px;
+    }
+
+    #sidebar > ul > li {
+        margin: 0 10px 5px 10px;
+    }
+    #sidebar > ul > li > a {
+        height:35px;
+        line-height:35px;
+        padding: 0 10px;
+        text-align: left;
+    }
+    #sidebar > ul > li > a i{
+        /*display: none !important;*/
+    }
+
+    .mail-info, .mail-info:hover {
+        display: none !important;
+    }
+    #sidebar ul > li > a .arrow, #sidebar > ul > li > a .arrow.open {
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+
+    #sidebar ul > li.active > a .arrow, #sidebar ul > li > a:hover .arrow, #sidebar ul > li > a:focus .arrow,
+    #sidebar > ul > li.active > a .arrow.open, #sidebar > ul > li > a:hover .arrow.open, #sidebar > ul > li > a:focus .arrow.open{
+        margin-top: 15px;
+    }
+
+    #sidebar > ul > li > a, #sidebar > ul > li > ul.sub > li {
+        width: 100%;
+    }
+    #sidebar > ul > li > ul.sub > li > a {
+        background: transparent !important ;
+    }
+    #sidebar > ul > li > ul.sub > li > a:hover {
+        /*background: #4A8BC2 !important ;*/
+    }
+
+
+    /* sidebar */
+    #sidebar {
+        margin: 0px !important;
+    }
+
+    /* sidebar collabler */
+    #sidebar .btn-navbar.collapsed .arrow {
+        display: none;
+    }
+
+    #sidebar .btn-navbar .arrow {
+        position: absolute;
+        right: 35px;
+        width: 0;
+        height: 0;
+        top:48px;
+        border-bottom: 15px solid #282e36;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+    }
+
+    /*---------*/
+
+    .modal-footer .btn {
+        margin-bottom: 0px !important;
+    }
+
+    .btn {
+        margin-bottom: 5px;
+    }
+
+
+
+
+    
+   
+    .full-width .navbar-toggle .icon-bar {
+        background: #c7c7c7;
+    }
+
+    .horizontal-menu {
+        float: left;
+        margin-left:0px;
+        width: 70%;
+        margin-top: 10px;
+    }
+
+    .top-nav {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+    }
+
+    .horizontal-menu .navbar-nav > li > a {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    
+    .mail-box aside {
+        display: block;
+    }
+
+    .mail-box .sm-side , .mail-box .lg-side{
+        width: 100% ;
+    }
+}
+@media (max-width: 768px) {
+	/* body container */
+    #middle-content {
+        /*margin: -20px 0px!important;*/
+        position: none !important;
+    }
+    .sidebar-close #sidebar {
+        height: auto;
+        overflow-y: auto;
+        position: absolute;
+        width: 100%;
+        z-index: 1001;
+        display: block;
+    }
+    ul.sidebar-menu {
+   		 margin-top: 0px;
+	}
+	.table-responsive {
+     border: 0px solid #ddd; 
+	}
+	.pagination>li>a, .pagination>li>span {
+    
+    padding: 6px 10px;
+	}
+	.panel-body {
+    	padding: 2px;
+	}
+	#storeform, #csiteform {
+		padding: 5px 10px;
+	}
+}
+
+
+@media (max-width: 480px) {
+
+    .navbar-collapse, .navbar-collapse.in, .mega-menu ul li a {
+        width: 100%;
+    }
+
+    .mega-menu .navbar-nav {
+        height: 100%;
+    }
+.input-min{
+	min-width:100px;
+}
+    
+    .notify-row, .search, .dont-show , .inbox-head .sr-input, .inbox-head .sr-btn{
+        display: none;
+    }
+
+   
+    .hidden-phone {
+        display: none !important;
+    }
+
+    .dataTables_filter {
+        float: left;
+    }
+
+    .dataTables_info {
+        margin-bottom: 10px;
+    }
+
+  
+    .full-width .navbar-toggle .icon-bar {
+        background: #c7c7c7;
+    }
+
+    .full-width .navbar-toggle {
+        float: right;
+        margin-right: 0px;
+         padding: 9px 0px;
+    }
+
+    .horizontal-menu {
+        float: left;
+        margin-left:0px;
+        width: 100%;
+    }
+
+    .top-nav {
+        position: absolute;
+        right: 10px;
+        top: 0px;
+    }
+
+    .horizontal-menu .navbar-nav > li > a {
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+
+    .ms-container {
+        width: 100%;
+    }
+
+    
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background-color: #ccc;
+        border-color:#ccc ;
+    }
+    
+    .mail-box aside {
+        display: block;
+    }
+
+    .mail-box .sm-side , .mail-box .lg-side{
+        width: 100% ;
+    }
+
+    
+}
+
+@media (max-width:320px) {
+    
+    .notify-row, .search, .dont-show, .inbox-head .sr-input, .inbox-head .sr-btn {
+        display: none;
+    }
+
+   
+    
+    .hidden-phone {
+        display: none !important;
+    }
+
+    .dataTables_filter {
+        float: left;
+    }
+
+    .dataTables_info {
+        margin-bottom: 10px;
+    }
+
+   
+    .lock-wrapper {
+        margin: 10% auto;
+        max-width: 310px;
+    }
+    .lock-input {
+        width: 82%;
+    }
+    
+    
+    .mail-box aside {
+        display: block ;
+    }
+
+    .mail-box .sm-side , .mail-box .lg-side{
+        width: 100% ;
+    }
+}
+
+
+
+

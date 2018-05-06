@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ 
+ <taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+   <description><![CDATA["Guanglian tag libs"]]></description>
+   <display-name>"Guanglian Tags"</display-name>
+   <tlib-version>2.2</tlib-version>
+   <short-name>sm</short-name>
+   <uri>/guanglian-tags</uri>
+
+<tag>
+ 		 <!-- Builds the image URL -->
+         <name>contentImage</name>
+         <tag-class>com.kekeinfo.web.tags.ContentImageUrlTag</tag-class>
+         <body-content>scriptless</body-content>
+
+ 
+         <attribute>
+                 <name>imageName</name>
+                 <required>true</required>
+                 <rtexprvalue>true</rtexprvalue>
+                 <type>java.lang.String</type>
+         </attribute>
+         
+         <attribute>
+                 <name>imageType</name>
+                 <required>true</required>
+                 <rtexprvalue>true</rtexprvalue>
+                 <type>java.lang.String</type>
+         </attribute>
+</tag>
+
+</taglib>
+
+ 

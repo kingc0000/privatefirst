@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.kekeinfo</groupId>
+  <artifactId>kekeinfo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>kekeinfo</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java-version>1.8</java-version>
+    <jdk-version>1.8</jdk-version>
+    <!-- The version of this current module -->
+    <guanglian.version>0.0.1-SNAPSHOT</guanglian.version>
+	<gl-core.version>0.0.1-SNAPSHOT</gl-core.version>
+	<gl-core-model.version>0.0.1-SNAPSHOT</gl-core-model.version>
+	<!-- gl-core-modules.version>2.0.3-SNAPSHOT</gl-core-modules.version-->
+	<!-- gl-search.version>0.0.5-SNAPSHOT</gl-search.version-->
+	<gl-shop.version>0.0.1-SNAPSHOTT</gl-shop.version>
+		
+  </properties>
+
+
+  <modules>
+  	<module>gl-core</module>
+  	<module>gl-core-model</module>
+  	<!-- module>gl-core-modules</module>
+  	<module>gl-search</module-->
+  	<module>gl-shop</module>
+  </modules>
+</project>

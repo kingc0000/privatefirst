@@ -1,0 +1,10 @@
+package com.kekeinfo.core.business.monitor.surface.dao;
+
+
+import com.kekeinfo.core.business.mbase.dao.MbaseDao;
+import com.kekeinfo.core.business.monitor.surface.model.RingBeam;
+
+
+public interface RingBeamDao extends MbaseDao<RingBeam> {
+}
+

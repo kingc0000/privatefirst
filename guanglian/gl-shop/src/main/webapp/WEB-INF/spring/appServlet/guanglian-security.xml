@@ -1,0 +1,94 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/jdbc
+	http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+
+	<global-method-security secured-annotations="enabled" jsr250-annotations="enabled" pre-post-annotations="enabled"/>
+	
+	<!-- JDBC User details -->
+	<beans:bean id="userDetailsService"
+		class="com.kekeinfo.web.admin.security.UserServicesImpl">
+	</beans:bean>
+	
+	<beans:bean id="passwordEncoder"
+		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+	</beans:bean>
+	
+	<beans:bean id="adminAccessDenied"
+		class="com.kekeinfo.web.utils.AdminAccessDeniedHandler">
+		<beans:property name="accessDeniedUrl" value="/admin/denied.html" />
+	</beans:bean>
+
+	<beans:bean id="concurrentSessionControlStrategy"  
+   		 class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy">  
+   	 	<beans:constructor-arg name="sessionRegistry" ref="sessionRegistry" />  
+   		 <beans:property name="maximumSessions" value="1"/>  
+	</beans:bean>  
+  
+	<beans:bean id="sessionRegistry" class="org.springframework.security.core.session.SessionRegistryImpl" /> 
+	<!-- updates last user logon timestamp -->
+	<beans:bean id="userAuthenticationSuccessHandler" class="com.kekeinfo.web.admin.security.UserAuthenticationSuccessHandler">
+	</beans:bean>
+	
+	
+	<beans:bean id="servicesAuthenticationSuccessHandler" class="com.kekeinfo.web.services.security.ServicesAuthenticationSuccessHandler">
+	</beans:bean>
+	
+	<beans:bean id="servicesAuthenticationEntryPoint" class="com.kekeinfo.web.services.security.ServicesAuthenticationEntryPoint">
+	</beans:bean>
+	
+	
+	
+	<http pattern="/**" auto-config="true" use-expressions="true" authentication-manager-ref="userAuthenticationManager">
+		<intercept-url pattern="/water/logon.html*" access="permitAll" />
+		<intercept-url pattern="/jiangong/**" access="permitAll" />
+		<intercept-url pattern="/water/login.html*" access="permitAll" />
+		<intercept-url pattern="/water/denied.html" access="permitAll"/>
+		<intercept-url pattern="/water/dedata/list.html" access="permitAll"/>
+		<intercept-url pattern="/water/pdata/list.html" access="permitAll"/>
+		<intercept-url pattern="/water/edata/list.html" access="permitAll"/>
+		<intercept-url pattern="/water/idata/list.html" access="permitAll"/>
+		<intercept-url pattern="/water/odata/list.html" access="permitAll"/>
+		<intercept-url pattern="/water/unauthorized.html" access="permitAll"/>
+		<intercept-url pattern="/water/csite/projectinfo.html" access="permitAll"/>
+		<intercept-url pattern="/water/info.html" access="permitAll"/>
+		<intercept-url pattern="/water/infomation.html" access="permitAll"/>
+		<intercept-url pattern="/water/nonsupport.html" access="permitAll"/>
+		<intercept-url pattern="/water/users/resetPassword.shtml*" access="permitAll" />
+		<intercept-url pattern="/water/users/verify.html*" access="permitAll" /> 
+		<intercept-url pattern="/water" access="hasRole('AUTH')" />
+		<intercept-url pattern="/" access="hasRole('AUTH')" />
+		<intercept-url pattern="/*.html*" access="hasRole('AUTH')" />
+		<intercept-url pattern="/water/" access="hasRole('AUTH')" />
+		<intercept-url pattern="/water/*.html*" access="hasRole('AUTH')" />
+		<intercept-url pattern="/water/*/*.html*" access="hasRole('AUTH')" />
+		<intercept-url pattern="/water/*/*/*.html*" access="hasRole('AUTH')" />
+		
+		<session-management session-authentication-strategy-ref="concurrentSessionControlStrategy" /> 
+		<form-login 
+		login-processing-url="/admin/j_spring_security_check" 
+		login-page="/water/login.html"
+		authentication-success-handler-ref="userAuthenticationSuccessHandler"
+		authentication-failure-url="/water/login.html?login_error=true"
+		default-target-url="/water/home.html" />
+			
+		<logout invalidate-session="true" 
+			logout-success-url="/water/home.html" 
+			logout-url="/water/j_spring_security_logout" />
+		<access-denied-handler ref="adminAccessDenied"/>
+	</http>
+	
+	
+	<authentication-manager id="userAuthenticationManager">
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder hash="sha" />
+		</authentication-provider>
+		
+	</authentication-manager>
+
+</beans:beans>

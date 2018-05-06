@@ -1,0 +1,208 @@
+{
+"zh":[
+	{
+		"zoneCode": "JING",
+		"zoneName": "北京",
+		"zoneEnName":"BeiJin",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "HU",
+		"zoneName": "上海",
+		"zoneEnName":"ShangHai",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "JIN",
+		"zoneName": "天津",
+		"zoneEnName":"TianJin",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "YU",
+		"zoneName": "重庆",
+		"zoneEnName":"ChongQin",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "HEI",
+		"zoneName": "黑龙江",
+		"zoneEnName":"HeiLongJIang",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "JILIN",
+		"zoneName": "吉林",
+		"zoneEnName":"JiLin",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "LIAO",
+		"zoneName": "辽宁",
+		"zoneEnName":"LiaoNing",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "MENG",
+		"zoneName": "内蒙古",
+		"zoneEnName":"NeiMenGu",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "JI",
+		"zoneName": "河北",
+		"zoneEnName":"HeBei",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "XIN",
+		"zoneName": "新疆",
+		"zoneEnName":"XinJiang",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "GAN",
+		"zoneName": "甘肃",
+		"zoneEnName":"GanShu",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "QING",
+		"zoneName": "青海",
+		"zoneEnName":"QinHai",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "SHAN",
+		"zoneName": "陕西",
+		"zoneEnName":"ShanXi",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "NING",
+		"zoneName": "宁夏",
+		"zoneEnName":"NinXia",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "HENAN",
+		"zoneName": "河南",
+		"zoneEnName":"HeNan",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "LU",
+		"zoneName": "山东",
+		"zoneEnName":"ShanDong",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "SHANXI",
+		"zoneName": "山西",
+		"zoneEnName":"ShanXi",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "WAN",
+		"zoneName": "安徽",
+		"zoneEnName":"Anhui",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "E",
+		"zoneName": "湖北",
+		"zoneEnName":"HuBei",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "XIANG",
+		"zoneName": "湖南",
+		"zoneEnName":"HeiNan",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "SU",
+		"zoneName": "江苏",
+		"zoneEnName":"JiangShu",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "CHUAN",
+		"zoneName": "四川",
+		"zoneEnName":"SiChuan",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "QIAN",
+		"zoneName": "贵州",
+		"zoneEnName":"GuiZhou",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "DIAN",
+		"zoneName": "云南",
+		"zoneEnName":"YunNan",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "GUI",
+		"zoneName": "广西",
+		"zoneEnName":"GuangXi",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "CANG",
+		"zoneName": "西藏",
+		"zoneEnName":"XiZhang",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "ZHE",
+		"zoneName": "浙江",
+		"zoneEnName":"ZheJiang",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "JIANGXI",
+		"zoneName": "江西",
+		"zoneEnName":"JiangXi",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "YUE",
+		"zoneName": "广东",
+		"zoneEnName":"GuangDong",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "MIN",
+		"zoneName": "福建",
+		"zoneEnName":"FuJian",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "TAI",
+		"zoneName": "台湾",
+		"zoneEnName":"TaiWan",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "QIONG",
+		"zoneName": "海南",
+		"zoneEnName":"HanNan",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "GANG",
+		"zoneName": "香港",
+		"zoneEnName":"HongKong",
+		"countryCode": "CN"
+	},
+	{
+		"zoneCode": "AO",
+		"zoneName": "澳门",
+		"zoneEnName":"Macao",
+		"countryCode": "CN"
+	}
+]
+}

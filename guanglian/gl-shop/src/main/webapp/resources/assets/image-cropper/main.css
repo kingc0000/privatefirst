@@ -1,0 +1,182 @@
+body {
+  background-color: #fcfcfc;
+}
+
+/* .avatar-view {
+  display: block;
+  margin: 15% auto 5%;
+  height: 220px;
+  width: 220px;
+  border: 3px solid #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,.15);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.avatar-view img {
+  width: 100%;
+} */
+
+.avatar-body {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.avatar-upload {
+  overflow: hidden;
+}
+
+.avatar-upload label {
+  display: block;
+  float: left;
+  clear: left;
+  width: 100px;
+}
+
+.avatar-upload input {
+  display: block;
+  margin-left: 110px;
+}
+
+.avater-alert {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.avatar-wrapper {
+  height: 364px;
+  width: 100%;
+  margin-top: 15px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,.25);
+  background-color: #fcfcfc;
+  overflow: hidden;
+}
+
+.avatar-wrapper img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+
+.avatar-preview {
+  float: left;
+  margin-top: 15px;
+  margin-right: 15px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.avatar-preview:hover {
+  border-color: #ccf;
+  box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+
+.avatar-preview img {
+  width: 100%;
+}
+
+.preview-lg {
+  height: auto;
+  width: 184px;
+  margin-top: 15px;
+}
+
+.preview-md {
+  height: auto;
+  width: 100px;
+}
+
+.preview-sm {
+  height: auto;
+  width: 50px;
+}
+
+@media (min-width: 992px) {
+  .avatar-preview {
+    float: none;
+  }
+}
+
+.avatar-btns {
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.avatar-btns .btn-group {
+  margin-right: 5px;
+}
+
+.loading {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #fff url("../../img/loading.gif") no-repeat center center;
+  opacity: .75;
+  filter: alpha(opacity=75);
+  z-index: 20140628;
+}
+
+/*image-dropper image view div*/
+.avatar-view {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  padding: 5px 10px;
+  font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial";
+  font-size: 14px;
+  line-height: 22px;
+  color: #777;
+  background-color: #FFF;
+  background-image: none;
+  text-align: center;
+  border: 1px solid #E5E5E5; }
+.avatar-view:hover {
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(135deg, #F6F6F6 25%, transparent 25%, transparent 50%, #F6F6F6 50%, #F6F6F6 75%, transparent 75%, transparent);
+  background-image: linear-gradient(-45deg, #F6F6F6 25%, transparent 25%, transparent 50%, #F6F6F6 50%, #F6F6F6 75%, transparent 75%, transparent);
+  -webkit-animation: stripes 2s linear infinite;
+          animation: stripes 2s linear infinite; }
+.avatar-view .dropify-clear {
+    display: none;
+    position: absolute;
+    opacity: 0;
+    z-index: 7;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: 2px solid #FFF;
+    text-transform: uppercase;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial";
+    font-size: 11px;
+    padding: 4px 8px;
+    font-weight: bold;
+    color: #FFF;
+    -webkit-transition: all 0.15s linear;
+            transition: all 0.15s linear; }
+.avatar-view .dropify-clear:hover {
+      background: rgba(0, 0, 0, 0.7); }  
+.avatar-view:hover .dropify-clear {
+    opacity: 1; }
+.avatar-view:hover.has-preview .dropify-clear {
+    display: block; 
+    opacity: 1;}  
+.avatar-view:hover.has-preview .dropify-infos{
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 3;
+      background: rgba(0, 0, 0, 0.7);
+      -webkit-transition: opacity 0.15s linear;
+              transition: opacity 0.15s linear; }   

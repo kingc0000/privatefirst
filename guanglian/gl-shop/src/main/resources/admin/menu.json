@@ -1,0 +1,63 @@
+{"menus":[
+{
+"menu":{
+"code":"department", 
+"name":"部门管理",
+"icon":"fa-cog",
+"url":"/water/department/list.html", 
+"role":"VIEW-PROJECT",
+"order":1,
+"menus":[
+			
+			{"menu":{
+				"code":"department-list","name":"部门列表","url":"/water/department/list.html","role":"VIEW-PROJECT","order":0
+			}},
+			{"menu":{
+				"code":"project-list","name":"项目列表","url":"/water/project/list.html","role":"VIEW-PROJECT","order":1
+			}}
+]
+}},
+{
+"menu":{
+"code":"profile", 
+"name":"用户管理",
+"icon":"fa-user",
+"url":"/water/users/list.html", 
+"role":"USER",
+"order":2
+}},
+{
+"menu":{
+"code":"configuration",
+"name":"配置管理",
+"icon":"fa-wrench", 
+"url":"/water/configuration/accounts.html", 
+"role":"ADMIN",
+"order":3,
+"menus":[
+	{"menu":{
+		"code":"logo","name":"公司LOGO","url":"/water/configuration/logo.html","role":"ADMIN","order":0
+	}},
+	{"menu":{
+		"code":"email","name":"邮箱配置","url":"/water/configuration/email.html","role":"ADMIN","order":1
+	}},
+	{"menu":{
+		"code":"base-right","name":"权限管理","url":"/water/permission/list.html","role":"SUPERADMIN","order":2
+	}},
+	{"menu":{
+		"code":"base-data","name":"基础数据","url":"/water/basedata/list.html","role":"SUPERADMIN","order":3
+	}},
+	{"menu":{
+		"code":"camera","name":"摄像头管理","url":"/water/camera/list.html","role":"ADMIN","order":4
+	}},
+	{"menu":{
+		"code":"camera","name":"摄像头同步","url":"/water/camera/init.html","role":"ADMIN","order":5
+	}},
+	{"menu":{
+		"code":"auditConfig","name":"送审规则","url":"/water/auditconfig/list.html","role":"ADMIN","order":6
+	}}
+]
+}}
+]}
+
+

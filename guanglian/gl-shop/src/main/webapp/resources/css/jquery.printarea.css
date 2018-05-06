@@ -1,0 +1,38 @@
+.PrintArea {
+    margin: 20px 5px;
+    padding: 10px;
+    width: 400px;
+}
+.preimg{
+	 max-width: 100%;
+    height: auto;
+}
+.printnote {
+	width:100%;
+	padding:5px;
+}
+/*设定table宽度*/
+.printnote table, .draftReport table {
+	width: 100%!important;
+}
+/*针对正式版*/
+.printReport{
+	background-color: #fff;
+	background-image: url('../img/watermark.png')!important;
+	background-repeat: repeat;
+	filter:alpha(opacity=10);
+	-moz-opacity:0.1;
+}
+@media print {
+	.printnote {
+	}	
+	.page-break { display: block; page-break-before: always; }
+}
+
+.printObj td
+{
+	white-space: nowrap;
+}
+.font-18{
+	font-size:18px;
+}

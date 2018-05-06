@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!-- /* * Licensed to the Apache Software Foundation (ASF) under one * or 
+	more contributor license agreements. See the NOTICE file * distributed with 
+	this work for additional information * regarding copyright ownership. The 
+	ASF licenses this file * to you under the Apache License, Version 2.0 (the 
+	* "License"); you may not use this file except in compliance * with the License. 
+	You may obtain a copy of the License at * * http://www.apache.org/licenses/LICENSE-2.0 
+	* * Unless required by applicable law or agreed to in writing, * software 
+	distributed under the License is distributed on an * "AS IS" BASIS, WITHOUT 
+	WARRANTIES OR CONDITIONS OF ANY * KIND, either express or implied. See the 
+	License for the * specific language governing permissions and limitations 
+	* under the License. * */ --> 
+<!DOCTYPE tiles-definitions PUBLIC
+         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+         "http://struts.apache.org/dtds/tiles-config_2_0.dtd">
+
+
+<tiles-definitions>
+
+	<!-- view image -->
+	<definition name="image-view" template="/common/view.jsp">
+	</definition>
+
+	<definition name="dashboard" template="/layout/water/home.jsp">
+	</definition>
+
+	<definition name="camera-dashboard" template="/layout/water/cameralayout.jsp">
+		<put-attribute name="body" value="/pages/water/camera/view.jsp" />
+	</definition>
+
+	<definition name="water-dashboard" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/home.jsp" />
+	</definition>
+
+	<definition name="system-dashboard" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/home.jsp" />
+	</definition>
+
+	<definition name="water-departments" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/department/departments.jsp" />
+	</definition>
+
+	<definition name="water-csites" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/csites.jsp" />
+	</definition>
+
+	<definition name="water-owells" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/owells.jsp" />
+	</definition>
+
+	<definition name="water-iwells" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/iwells.jsp" />
+	</definition>
+
+	<definition name="water-pwells" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/pwells.jsp" />
+	</definition>
+
+	<definition name="water-dewells" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/dewells.jsp" />
+	</definition>
+
+	<definition name="water-pdatas" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/pwelldatas.jsp" />
+	</definition>
+
+	<definition name="water-dedatas" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/dewelldatas.jsp" />
+	</definition>
+
+	<definition name="water-idatas" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/iwelldatas.jsp" />
+	</definition>
+
+	<definition name="water-odatas" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/owelldatas.jsp" />
+	</definition>
+
+	<definition name="water-emonitors" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/emonitors.jsp" />
+	</definition>
+
+	<definition name="water-dmonitors" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/dmonitors.jsp" />
+	</definition>
+
+	<definition name="water-user-profile" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/profile/profile.jsp" />
+	</definition>
+
+	<definition name="water-user-password" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/profile/password.jsp" />
+	</definition>
+
+	<definition name="water-users" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/profile/users.jsp" />
+	</definition>
+	<definition name="water-head" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/profile/head.jsp" />
+	</definition>
+
+	<definition name="water-content-pages" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/content/contentPages.jsp" />
+	</definition>
+
+	<definition name="config-logo" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/configuration/logo.jsp" />
+	</definition>
+
+	<definition name="config-email" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/configuration/email.jsp" />
+	</definition>
+
+	<!-- permission list -->
+	<definition name="water-permission" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/permission/permissionlist.jsp" />
+	</definition>
+	<!-- camera -->
+	<definition name="water-camera-init" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/camera/init.jsp" />
+	</definition>
+	<definition name="water-cameras" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/camera/cameras.jsp" />
+	</definition>
+	<definition name="water-camera-monitor" template="/layout/water/cameralayout.jsp">
+		<put-attribute name="body" value="/pages/water/camera/monitor.jsp" />
+	</definition>
+
+	<!-- basedata type list -->
+	<definition name="water-basedata" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/basedata/basedatas.jsp" />
+	</definition>
+	<!-- daily type list -->
+	<definition name="csite-daily" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/daily/dailys.jsp" />
+	</definition>
+	<definition name="csite-dailypre" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/daily/dailyspre.jsp" />
+	</definition>
+
+	<definition name="csite-wlist" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/wlist.jsp" />
+	</definition>
+
+	<definition name="csite-wedit" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/wedit.jsp" />
+	</definition>
+
+	<definition name="csite-cameras" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/camera/cameras.jsp" />
+	</definition>
+
+	<definition name="admin-content-filebrowser" template="/layout/water/noSkinLayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/components/fileBrowser.jsp" />
+	</definition>
+	<!-- computer -->
+	<definition name="csite-confined" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/computer/confined.jsp" />
+	</definition>
+	<definition name="csite-aquifer" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/computer/charge.jsp" />
+	</definition>
+	<definition name="csite-recharge" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/computer/recharge.jsp" />
+	</definition>
+	<definition name="csite-statistics" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/statistics.jsp" />
+	</definition>
+	<definition name="csite-preport" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/preport.jsp" />
+	</definition>
+	<definition name="csite-welldaily" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/welldaily.jsp" />
+	</definition>
+	<definition name="csite-report" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/report.jsp" />
+	</definition>
+	<!-- design report -->
+	<definition name="water-dreport" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/dreport/list.jsp" />
+	</definition>
+	<definition name="water-dreport-approve" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/dreport/listApprove.jsp" />
+	</definition>
+	<!-- report audit config -->
+	<definition name="water-audit-config" template="/layout/water/layout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/configuration/auditConfig.jsp" />
+	</definition>
+
+	<!-- ddoc type list -->
+	<definition name="csite-ddoc" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/ddoc/ddocs.jsp" />
+	</definition>
+	<definition name="ddoc-preimg" template="/layout/water/previewlayout.jsp">
+		<put-attribute name="body" value="/common/previewimg.jsp" />
+	</definition>
+	<definition name="ddoc-prepdf" template="/layout/water/previewlayout.jsp">
+		<put-attribute name="body" value="/common/previewpdf.jsp" />
+	</definition>
+	<definition name="ddoc-pretxt" template="/layout/water/previewlayout.jsp">
+		<put-attribute name="body" value="/common/previewtxt.jsp" />
+	</definition>
+
+	<!-- gather data -->
+	<definition name="water-gateway" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/gateway/gateways.jsp" />
+	</definition>
+	<definition name="water-dataconf" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/dataconf/dataconfs.jsp" />
+	</definition>
+	<definition name="water-warning" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/warning/warnings.jsp" />
+	</definition>
+
+	<!-- project review -->
+	<definition name="csite-preview" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/preview/preview.jsp" />
+	</definition>
+	<definition name="preview-imgs" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/preview/imgs.jsp" />
+	</definition>
+	<definition name="csite-preview-list" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/preview/list.jsp" />
+	</definition>
+	<definition name="csite-preview-detaillist" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/preview/detaillist.jsp" />
+	</definition>
+	<definition name="admin-project" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/project/project.jsp" />
+	</definition>
+	<definition name="admin-monitor" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/monitor/monitor.jsp" />
+	</definition>
+	<definition name="monitor-home" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/monitor/home.jsp" />
+	</definition>
+	<definition name="guard-home" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/guard/home.jsp" />
+	</definition>
+	<definition name="admin-guard" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/guard/guard.jsp" />
+	</definition>
+	<definition name="admin-equip" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/equip/equip.jsp" />
+	</definition>
+	<definition name="guard-detail" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/guard/gproject.jsp" />
+	</definition>
+	<definition name="monitor-detail" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/monitor/mproject.jsp" />
+	</definition>
+	<definition name="admin-monitoreqip" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monitoreqip/monitoreqip.jsp" />
+	</definition>
+	<definition name="admin-meqips" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monitoreqip/meqips.jsp" />
+	</definition>
+	<definition name="admin-monitoruser" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/monitor/users.jsp" />
+	</definition>
+
+	<definition name="pcfrom-water-chome" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/chome.jsp" />
+	</definition>
+	<definition name="pcfrom-water-ctype" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/ctype.jsp" />
+	</definition>
+	<definition name="pcfrom-water-cprojects" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/cprojects.jsp" />
+	</definition>
+	<definition name="guard-water-ctype" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/guard/ctype.jsp" />
+	</definition>
+	<definition name="monitor-water-ctype" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/monitor/ctype.jsp" />
+	</definition>
+
+	<definition name="phonefrom-water-chome" template="/layout/water/cphonelayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/chome.jsp" />
+	</definition>
+	<definition name="phonefrom-water-ctype" template="/layout/water/cphonelayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/ctype.jsp" />
+	</definition>
+	<definition name="phonefrom-water-cprojects" template="/layout/water/cphonelayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/cprojects.jsp" />
+	</definition>
+	<definition name="water-cproject" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/chome/cproject.jsp" />
+	</definition>
+	<definition name="phone-wedit" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/wedit.jsp" />
+	</definition>
+	<definition name="phone-pwells" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/pwells.jsp" />
+	</definition>
+	<definition name="phone-dewells" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/dewells.jsp" />
+	</definition>
+	<definition name="phone-owells" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/owells.jsp" />
+	</definition>
+	<definition name="phone-iwells" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/iwells.jsp" />
+	</definition>
+	<definition name="phone-dmonitors" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/dmonitors.jsp" />
+	</definition>
+	<definition name="phone-gateway" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/gateway/gateways.jsp" />
+	</definition>
+	<definition name="phone-dataconf" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/dataconf/dataconfs.jsp" />
+	</definition>
+	<definition name="phone-cameras" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/camera/cameras.jsp" />
+	</definition>
+	<definition name="phone-daily" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/daily/dailys.jsp" />
+	</definition>
+	<definition name="phone-welldaily" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/welldaily.jsp" />
+	</definition>
+	<definition name="phone-report" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/csite/report.jsp" />
+	</definition>
+	<definition name="phone-preview" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/preview/preview.jsp" />
+	</definition>
+	<definition name="wells-print" template="/layout/water/previewlayout.jsp">
+		<put-attribute name="body" value="/pages/water/well/erprint.jsp" />
+	</definition>
+	<definition name="pwell-edit" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/pwelldatas.jsp" />
+	</definition>
+	<definition name="dewell-edit" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/dewelldatas.jsp" />
+	</definition>
+	<definition name="ewell-edit" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/emonitors.jsp" />
+	</definition>
+	<definition name="iwell-edit" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/iwelldatas.jsp" />
+	</definition>
+	<definition name="owell-edit" template="/layout/water/cpmaplayout.jsp">
+		<put-attribute name="body" value="/pages/water/data/owelldatas.jsp" />
+	</definition>
+	<definition name="water-guardeqip" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/guardeqip/guardeqip.jsp" />
+	</definition>
+
+	<definition name="admin-mpoint" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monitoreqip/wanning.jsp" />
+	</definition>
+	<definition name="admin-monitordaily" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monitordaily/monitordaily.jsp" />
+	</definition>
+	<definition name="monitor-dailypre" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monitordaily/preview.jsp" />
+	</definition>
+	<definition name="guard-dailypre" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/guarddaily/preview.jsp" />
+	</definition>
+	<definition name="guard-gonpre" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/gonproblem/preview.jsp" />
+	</definition>
+	<definition name="admin-monproblem" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monproblem/monproblem.jsp" />
+	</definition>
+
+
+	<definition name="admin-surface" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/surface.jsp" />
+	</definition>
+	<definition name="admin-waterline" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/waterline.jsp" />
+	</definition>
+	<definition name="admin-building" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/building.jsp" />
+	</definition>
+	<definition name="admin-upright" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/upright.jsp" />
+	</definition>
+	<definition name="admin-ringbeam" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/ringbeam.jsp" />
+	</definition>
+	<definition name="admin-hiddenline" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/hiddenline.jsp" />
+	</definition>
+	<definition name="admin-supaxial" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/mbase/supaxial.jsp" />
+	</definition>
+	<definition name="admin-displacement" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mbase/displacement.jsp" />
+	</definition>
+	<definition name="admin-oblique" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/oblique/oblique.jsp" />
+	</definition>
+
+
+	<definition name="admin-surfacedata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/surfacedata.jsp" />
+	</definition>
+	<definition name="admin-surfacenow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/surfacenow.jsp" />
+	</definition>
+	<definition name="admin-buildingdata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/buildingdata.jsp" />
+	</definition>
+	<definition name="admin-buildingdatanow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/buildingnow.jsp" />
+	</definition>
+	<definition name="admin-hiddenlinedata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/hiddenlinedata.jsp" />
+	</definition>
+	<definition name="admin-hiddenlinenow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/hiddenlinenow.jsp" />
+	</definition>
+	<definition name="admin-ringbeamdata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/ringbeamdata.jsp" />
+	</definition>
+	<definition name="admin-ringbeamnow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/ringbeamnow.jsp" />
+	</definition>
+	<definition name="admin-supaxialdata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/supaxialdata.jsp" />
+	</definition>
+	<definition name="admin-supaxialnow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/supaxialnow.jsp" />
+	</definition>
+	<definition name="admin-uprightdata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/uprightdata.jsp" />
+	</definition>
+	<definition name="admin-uprightnow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/uprightnow.jsp" />
+	</definition>
+	<definition name="admin-waterlinedata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/waterlinedata.jsp" />
+	</definition>
+	<definition name="admin-waterlinenow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/waterlinenow.jsp" />
+	</definition>
+	<definition name="admin-displacementdata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/displacementdata.jsp" />
+	</definition>
+	<definition name="dmin-displacementnow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mdbase/displacementnow.jsp" />
+	</definition>
+	<definition name="admin-obliquedata" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/obliquedata/obliquedata.jsp" />
+	</definition>
+	<definition name="admin-obliquedatanow" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/obliquedata/obliquenow.jsp" />
+	</definition>
+	<definition name="admin-depth" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/depth/depth.jsp" />
+	</definition>
+
+	<definition name="admin-mstatistical" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mstatistical/mstatistical.jsp" />
+	</definition>
+	<definition name="admin-mdetail" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/mstatistical/mdetail.jsp" />
+	</definition>
+	<definition name="monitor-monpre" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/monproblem/preview.jsp" />
+	</definition>
+	<definition name="monitor-subpre" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/substrate/preview.jsp" />
+	</definition>
+	<definition name="admin-substrate" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/substrate/substrate.jsp" />
+	</definition>
+
+	<definition name="admin-verticaldis" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/verticaldis/verticaldis.jsp" />
+	</definition>
+	<definition name="admin-diameterconvert" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/diameterconvert/diameterconvert.jsp" />
+	</definition>
+	<definition name="admin-verticaldis" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/verticaldis/verticaldis.jsp" />
+	</definition>
+
+	<definition name="admin-diameterconvertdata" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/diameterconvertdata/diameterconvertdata.jsp" />
+	</definition>
+	<definition name="admin-diameterconvertnow" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/diameterconvertdata/diameterconvertnow.jsp" />
+	</definition>
+	<definition name="admin-verticaldisdata" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/verticaldisdata/verticaldisdata.jsp" />
+	</definition>
+	<definition name="admin-verticaldisnow" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body"
+			value="/pages/water/verticaldisdata/verticaldisnow.jsp" />
+	</definition>
+	<definition name="admin-rmreport" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/rmreport/rmreport.jsp" /> 
+	</definition>
+	<definition name="admin-amessage" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/amessage/amessage.jsp" /> 
+	</definition>
+	<definition name="admin-gjob" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/gjob/gjob.jsp" /> 
+	</definition>
+	<definition name="admin-sign" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/sign/sign.jsp" /> 
+	</definition>
+	<definition name="admin-ssign" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/sign/sign.jsp" /> 
+	</definition>
+	<definition name="admin-sign-detail" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/sign/detail.jsp" /> 
+	</definition>
+	<definition name="admin-appmessage" template="/layout/water/layout.jsp">
+		<put-attribute name="body" value="/pages/water/amessage/appmessage.jsp" /> 
+	</definition>
+	<definition name="guard-appmessage" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/amessage/appmessage.jsp" /> 
+	</definition>
+	<definition name="water-appmessage" template="/layout/water/waterlayout.jsp">
+		<put-attribute name="body" value="/pages/water/amessage/appmessage.jsp" /> 
+	</definition>
+	<definition name="monitor-appmessage" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/amessage/appmessage.jsp" /> 
+	</definition>
+	<definition name="admin-gjob-signin" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/sign/ssignin.jsp" /> 
+	</definition>
+	<definition name="admin-gjob-signout" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/sign/ssignout.jsp" /> 
+	</definition>
+	<definition name="admin-sign-in" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/sign/in.jsp" /> 
+	</definition>
+	<definition name="guard-gprojects" template="/layout/water/guardlayout.jsp">
+		<put-attribute name="body" value="/pages/water/guard/gprojects.jsp" /> 
+	</definition>
+	<definition name="monitor-mprojects" template="/layout/water/monitorlayout.jsp">
+		<put-attribute name="body" value="/pages/water/monitor/mprojects.jsp" /> 
+	</definition>
+	<definition name="admin-xmreport" template="/layout/water/mlistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/xmreport/xmreport.jsp" /> 
+	</definition>
+	<definition name="admin-greport" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/greport/greport.jsp" /> 
+	</definition>
+	<definition name="admin-hshift" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/hshift/hshift.jsp" /> 
+	</definition>
+	<definition name="admin-hshiftdata" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/hshiftdata/hshiftdata.jsp" /> 
+	</definition>
+	<definition name="admin-hshiftnow" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/hshiftdata/hshiftnow.jsp" /> 
+	</definition>
+	<definition name="admin-guarddaily" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/guarddaily/guarddaily.jsp" /> 
+	</definition>
+	<definition name="admin-gonproblem" template="/layout/water/glistlayout.jsp">
+		<put-attribute name="body" value="/pages/water/gonproblem/gonproblem.jsp" /> 
+	</definition>
+	<definition name="jg-project" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/project.jsp" /> 
+	</definition>
+	<definition name="jg-map" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/wlist.jsp" /> 
+	</definition>
+	<definition name="jg-pwells" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/pwells.jsp" /> 
+	</definition>
+	<definition name="jg-dewells" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/dewells.jsp" /> 
+	</definition>
+	<definition name="jg-ewells" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/dmonitors.jsp" /> 
+	</definition>
+	<definition name="jg-ewlldatas" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/emonitors.jsp" /> 
+	</definition>
+	<definition name="jg-iwells" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/iwells.jsp" /> 
+	</definition>
+	<definition name="jg-owells" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/owells.jsp" /> 
+	</definition>
+	<definition name="jg-pwelldata" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/pwelldatas.jsp" /> 
+	</definition>
+	<definition name="jg-iwelldata" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/iwelldatas.jsp" /> 
+	</definition>
+	<definition name="jg-owelldata" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/owelldatas.jsp" /> 
+	</definition>
+	<definition name="jg-dewelldata" template="/layout/water/jglayout.jsp">
+		<put-attribute name="body" value="/pages/water/jiangong/dewelldatas.jsp" /> 
+	</definition>
+</tiles-definitions>
