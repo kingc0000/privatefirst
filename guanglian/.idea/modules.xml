@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gl-core/gl-core.iml" filepath="$PROJECT_DIR$/gl-core/gl-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gl-core-model/gl-core-model.iml" filepath="$PROJECT_DIR$/gl-core-model/gl-core-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gl-shop/gl-shop.iml" filepath="$PROJECT_DIR$/gl-shop/gl-shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kekeinfo.iml" filepath="$PROJECT_DIR$/kekeinfo.iml" />
+    </modules>
+  </component>
+</project>

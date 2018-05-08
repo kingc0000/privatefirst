@@ -60,6 +60,9 @@
 	<definition name="water-dewells" template="/layout/water/welllayout.jsp">
 		<put-attribute name="body" value="/pages/water/well/dewells.jsp" />
 	</definition>
+	<definition name="warter-projectimg" template="/layout/water/welllayout.jsp">
+		<put-attribute name="body" value="/pages/water/projectimg/projectimg.jsp" />
+	</definition>
 
 	<definition name="water-pdatas" template="/layout/water/welllayout.jsp">
 		<put-attribute name="body" value="/pages/water/data/pwelldatas.jsp" />

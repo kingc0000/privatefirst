@@ -10,6 +10,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
@@ -17,7 +19,9 @@ import javax.persistence.TableGenerator;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.kekeinfo.core.business.common.model.audit.AuditListener;
+import com.kekeinfo.core.business.constructionsite.model.ConstructionSite;
 import com.kekeinfo.core.business.generic.model.KekeinfoEntity;
+import com.kekeinfo.core.business.project.model.Project;
 import com.kekeinfo.core.constants.SchemaConstant;
 
 /**
@@ -53,20 +57,25 @@ public class ProjectImg extends KekeinfoEntity<Long, ProjectImg> {
     private String picType;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<ImgDewartWell> imgDewartWells;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<ImgDredgWell> imgDredgWell;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<ImgObservWell> imgObservWell;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<ImgRechargeWell> imgRechargeWell;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="CSITE_ID", nullable=true)
+    private ConstructionSite csite;
 
     public Set<ImgDewartWell> getImgDewartWells() {
         return imgDewartWells;

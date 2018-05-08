@@ -49,6 +49,7 @@ public class ImgDredgWell extends KekeinfoEntity<Long, ImgDredgWell> {
     @Column(name = "MEMO", length = 1000)
     private String memo;
 
+
     public String getMemo() {
         return memo;
     }

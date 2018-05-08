@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Annotation profile for kekeinfo" enabled="true">
+        <sourceOutputDir name="target/generated-sources/apt" />
+        <sourceTestOutputDir name="target/generated-sources/apt-test" />
+        <outputRelativeToContentRoot value="true" />
+        <option name="addSuppressWarningsAnnotation" value="true" />
+        <option name="fullyAnnotationConfigured" value="true" />
+        <module name="gl-core-model" />
+      </profile>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="gl-shop" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gl-core" target="1.8" />
+      <module name="gl-core-model" target="1.8" />
+      <module name="gl-shop" target="1.8" />
+      <module name="kekeinfo" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

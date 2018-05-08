@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2018 Baidu, Inc. All Rights Reserved.
- */
 package com.kekeinfo.core.business.projectimg.service;
 
 import com.kekeinfo.core.business.generic.service.KekeinfoEntityService;
