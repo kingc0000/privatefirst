@@ -1,5 +1,6 @@
 package com.kekeinfo.core.business.projectimg.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -19,8 +20,12 @@ import javax.persistence.TableGenerator;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
 import com.kekeinfo.core.business.common.model.audit.AuditListener;
+import com.kekeinfo.core.business.common.model.audit.Auditable;
 import com.kekeinfo.core.business.constructionsite.model.ConstructionSite;
+import com.kekeinfo.core.business.daily.model.GuardDailyImage;
 import com.kekeinfo.core.business.generic.model.KekeinfoEntity;
+import com.kekeinfo.core.business.point.model.Basepoint;
+import com.kekeinfo.core.business.point.model.BasepointLink;
 import com.kekeinfo.core.business.project.model.Project;
 import com.kekeinfo.core.constants.SchemaConstant;
 
@@ -57,56 +62,68 @@ public class ProjectImg extends KekeinfoEntity<Long, ProjectImg> {
     private String picType;
 
     @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
-    private Set<ImgDewartWell> imgDewartWells;
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
-    private Set<ImgDredgWell> imgDredgWell;
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
-    private Set<ImgObservWell> imgObservWell;
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
-    private Set<ImgRechargeWell> imgRechargeWell;
-
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="CSITE_ID", nullable=true)
+    @JoinColumn(name = "CSITE_ID", nullable = true)
     private ConstructionSite csite;
 
-    public Set<ImgDewartWell> getImgDewartWells() {
-        return imgDewartWells;
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    private Set<DeformmonitorMarker> dmMarkers = new HashSet<DeformmonitorMarker>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    private Set<DewateringMarker> dwMarkers = new HashSet<DewateringMarker>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    private Set<InvertedWellMarker> iMarkers = new HashSet<InvertedWellMarker>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    private Set<ObserveWellMarker> oMarkers = new HashSet<ObserveWellMarker>();
+
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
+    private Set<PumpWellMarker> pMarkers = new HashSet<PumpWellMarker>();
+
+    public Set<DeformmonitorMarker> getDmMarkers() {
+        return dmMarkers;
     }
 
-    public void setImgDewartWells(Set<ImgDewartWell> imgDewartWells) {
-        this.imgDewartWells = imgDewartWells;
+    public void setDmMarkers(Set<DeformmonitorMarker> dmMarkers) {
+        this.dmMarkers = dmMarkers;
     }
 
-    public Set<ImgDredgWell> getImgDredgWell() {
-        return imgDredgWell;
+    public Set<DewateringMarker> getDwMarkers() {
+        return dwMarkers;
     }
 
-    public void setImgDredgWell(Set<ImgDredgWell> imgDredgWell) {
-        this.imgDredgWell = imgDredgWell;
+    public void setDwMarkers(Set<DewateringMarker> dwMarkers) {
+        this.dwMarkers = dwMarkers;
     }
 
-    public Set<ImgObservWell> getImgObservWell() {
-        return imgObservWell;
+    public Set<InvertedWellMarker> getiMarkers() {
+        return iMarkers;
     }
 
-    public void setImgObservWell(Set<ImgObservWell> imgObservWell) {
-        this.imgObservWell = imgObservWell;
+    public void setiMarkers(Set<InvertedWellMarker> iMarkers) {
+        this.iMarkers = iMarkers;
     }
 
-    public Set<ImgRechargeWell> getImgRechargeWell() {
-        return imgRechargeWell;
+    public Set<ObserveWellMarker> getoMarkers() {
+        return oMarkers;
     }
 
-    public void setImgRechargeWell(Set<ImgRechargeWell> imgRechargeWell) {
-        this.imgRechargeWell = imgRechargeWell;
+    public void setoMarkers(Set<ObserveWellMarker> oMarkers) {
+        this.oMarkers = oMarkers;
+    }
+
+    public Set<PumpWellMarker> getpMarkers() {
+        return pMarkers;
+    }
+
+    public void setpMarkers(Set<PumpWellMarker> pMarkers) {
+        this.pMarkers = pMarkers;
     }
 
     @Override

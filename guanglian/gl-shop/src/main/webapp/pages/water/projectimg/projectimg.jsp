@@ -60,17 +60,27 @@
 <script type="text/javascript">
     $(document).ready(function () {
         var markers = [];
-        <c:forEach items="${projectImgs[0].imgDewartWells}" var="m" >
-        var icon = '';
-        <c:if test="${m.id == 1}">
-        icon = ' well-icon dewell grey'
+        <c:if test="${not empty projectImgs[0].pMarkers}">
+            <c:forEach items="${projectImgs[0].pMarkers}" var="m" >
+            var icon = '';
+            <c:if test="${m.id == 1}">
+            icon = ' well-icon dewell grey'
+            </c:if>
+            <c:if test="${m.id == 2}">
+            icon = ' well-icon dewell red'
+            </c:if>
+            var marker = {
+                icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
+                    value: ${m.well.name},
+                    offsetX: 20,
+                    style: {
+                        "border-color": "#86df5f"
+                    }
+                }
+            };
+            markers.push(marker)
+            </c:forEach>
         </c:if>
-        <c:if test="${m.id == 2}">
-        icon = ' well-icon dewell red'
-        </c:if>
-        var marker = {icon: icon, x: ${m.markerX}, y: ${m.markerY}};
-        markers.push(marker)
-        </c:forEach>
         $('#zoom-marker-img').zoomMarker({
             src: "${projectImgs[0].url}",
             rate: 0.2,
@@ -90,7 +100,7 @@
         $.post('/water/csite/getWarning.shtml', {"pid":${pid}}, function (datas) {
             welldatas = datas;
             $.each(datas.pwell, function (index, pwell) {
-                $("#wellselect").append("<option value=pwell'" + pwell.id + "'>" + pwell.name + "</option>");
+                $("#wellselect").append("<option value='pwell" + pwell.id + "'>" + pwell.name + "</option>");
             })
         })
         $('#zoom-marker-img').on("contextmenu", function (ev) {
@@ -108,7 +118,9 @@
         })
         $('#zoom-marker-img').on("zoom_marker_click", function (event, marker) {
             console.log(JSON.stringify(marker));
-            $('#zoom-marker-img').zoomMarker_RemoveMarker(marker.id);
+            if (confirm("确定要删除" + marker.param.dialog.value + "标记吗？")) {
+                $('#zoom-marker-img').zoomMarker_RemoveMarker(marker.id);
+            }
         });
         $("#addMarker").on('click', function (e) {
             $('#zoom-marker-img').trigger("zoom_marker_mouse_click", {
@@ -161,37 +173,52 @@
                     $('#zoom-marker-img').zoomMarker_RemoveMarker(element.id);
                 }
             });
+            var val = $("#wellselect option:selected").val();
+            var welltype = val.substring(0, 5);
+            var id = val.substring(5);
+            var marker = new Object();
+            marker.x = rightClickPosition.x;
+            marker.y = rightClickPosition.y;
+            marker.welltype = welltype;
+            marker.wellid = id;
+            var dialog = '';
+            var icon = 'well-icon pwell grey';
+            var hasMarked = false;
+            $.each(welldatas[welltype], function (index, elem) {
+                if (elem.id == id) {
+                    icon = 'well-icon pwell';
+                    dialog = elem.name;
+                    $(markerList).each(function (index, element) {
+                        if (element.param.icon.indexOf(welltype) != -1 && element.param.dialog.value == elem.name) {
+                            alert(dialog + "已经添加过标记！")
+                            hasMarked = true;
+                            return false;
+                        }
+                    });
+                }
+            })
+            if (!hasMarked && confirm("确定将此处标记为 " + dialog + " 吗？")) {
+                var markernames = document.getElementById("markernames");
+                markernames.style.display = "none";
+                $('#zoom-marker-img').zoomMarker_AddMarker({
+                    icon: icon,
+                    x: rightClickPosition.x,
+                    y: rightClickPosition.y,
+                    dialog: {
+                        value: dialog,
+                        offsetX: 20,
+                        style: {
+                            "border-color": "#86df5f"
+                        }
+                    },
+                });
+            } else {
+                var markernames = document.getElementById("markernames");
+                markernames.style.display = "none";
+            }
+
         })
     })
-
-    function addMarker() {
-        var val = $("#wellselect").val();
-        var welltype = val.substring(0, 5);
-        var id = val.substring(5);
-        var marker = new Object();
-        marker.x = rightClickPosition.x;
-        marker.y = rightClickPosition.y;
-        marker.welltype = welltype;
-        marker.wellid = id;
-        var icon = 'well-icon pwell grey';
-        $.each(welldatas[welltype], function (index, elem) {
-            if (elem.id == id){
-                icon = 'well-icon pwell'
-            }
-        })
-        var markernames = document.getElementById("markernames");
-        markernames.style.display = "none";
-        $('#zoom-marker-img').zoomMarker_AddMarker({
-            icon: icon,
-            x: rightClickPosition.x,
-            y: rightClickPosition.y,
-        });
-    }
-
-    function cancleMarker() {
-        var markernames = document.getElementById("markernames");
-        markernames.style.display = "none";
-    }
 </script>
 <div class="row" id="edittable" style="display:none;">
     <div class="col-lg-12 col-sm-12">
@@ -220,8 +247,4 @@
     <select id="wellselect">
         <option>请选择</option>
     </select>
-    <div>
-        <button id="save" onclick="addMarker()" style="float : left">确定</button>
-        <button id="cancle" onclick="cancleMarker()" style="float : left">取消</button>
-    </div>
 </div>

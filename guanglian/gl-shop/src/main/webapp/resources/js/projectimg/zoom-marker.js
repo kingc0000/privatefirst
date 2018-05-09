@@ -343,6 +343,7 @@
                 if (((options.hover_marker_id || null) != null) && options.hover_marker_id === markerId) {
                     dialog.hide();
                 }
+                markerList.splice(index, 1);
                 return false;
             }
         });

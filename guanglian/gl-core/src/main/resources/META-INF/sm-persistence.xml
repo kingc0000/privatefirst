@@ -11,10 +11,11 @@
 	    <class>com.kekeinfo.core.business.department.model.DepartmentNode</class>	
 	    <class>com.kekeinfo.core.business.zone.model.Zone</class>
 	    <class>com.kekeinfo.core.business.projectimg.model.ProjectImg</class>
-	    <class>com.kekeinfo.core.business.projectimg.model.ImgDewartWell</class>
-	    <class>com.kekeinfo.core.business.projectimg.model.ImgDredgWell</class>
-	    <class>com.kekeinfo.core.business.projectimg.model.ImgObservWell</class>
-	    <class>com.kekeinfo.core.business.projectimg.model.ImgRechargeWell</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.DeformmonitorMarker</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.DewateringMarker</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.InvertedWellMarker</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.ObserveWellMarker</class>
+	    <class>com.kekeinfo.core.business.projectimg.model.PumpWellMarker</class>
 
 		
 		<class>com.kekeinfo.core.business.system.model.SystemConfiguration</class>
