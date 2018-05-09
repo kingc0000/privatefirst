@@ -266,7 +266,7 @@
      * @param marker
      */
     var addMarker = function (marker) {
-        var _marker = $("<div class='" + marker.icon + "'></div>");
+        var _marker = $("<div id= '"  + marker.id + "' class='" + marker.icon + "'></div>");
         var __marker = _marker.find("img");
         var size = marker.size || options.marker_size;
         marker.size = size;

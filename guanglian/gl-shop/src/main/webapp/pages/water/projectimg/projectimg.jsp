@@ -2,10 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@page pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@page pageEncoding="UTF-8" %>
 <%@ page session="false" %>
-<script src='<c:url value="/resources/js/projectimg/jquery-1.11.3.min.js" />'></script>
 <script src='<c:url value="/resources/js/projectimg/jquery.mousewheel.min.js" />'></script>
 <script src='<c:url value="/resources/js/projectimg/hammer.min.js" />'></script>
 <script src='<c:url value="/resources/js/projectimg/zoom-marker.js" />'></script>
@@ -13,8 +12,8 @@
 <link href='<c:url value="/resources/css/style.css" />' rel="stylesheet">
 <script type="text/javascript">
     //设置title
-    var pageTitle="图纸标记";
-    $('#pictitle').html(pageTitle+'管理');
+    var pageTitle = "图纸标记";
+    $('#pictitle').html(pageTitle + '管理');
     $('#panel-heading').html(pageTitle);
 </script>
 <style>
@@ -50,22 +49,27 @@
         color: #ccaf04;
         line-height: 30px;
         text-align: center;
-        border-bottom: 2px solid #1627e2;
+        border-bottom: 2px solid #000000;
+    }
+
+    select {
+        width: 80px;
+        height: 20px;
     }
 </style>
 <script type="text/javascript">
     $(document).ready(function () {
         var markers = [];
         <c:forEach items="${projectImgs[0].imgDewartWells}" var="m" >
-            var icon = '';
-            <c:if test="${m.id == 1}">
-                icon = ' well-icon dewell grey'
-            </c:if>
-            <c:if test="${m.id == 2}">
-                icon = ' well-icon dewell red'
-            </c:if>
-            var marker = {icon:icon, x : ${m.markerX}, y : ${m.markerY}};
-            markers.push(marker)
+        var icon = '';
+        <c:if test="${m.id == 1}">
+        icon = ' well-icon dewell grey'
+        </c:if>
+        <c:if test="${m.id == 2}">
+        icon = ' well-icon dewell red'
+        </c:if>
+        var marker = {icon: icon, x: ${m.markerX}, y: ${m.markerY}};
+        markers.push(marker)
         </c:forEach>
         $('#zoom-marker-img').zoomMarker({
             src: "${projectImgs[0].url}",
@@ -80,7 +84,15 @@
     var rightClickX, rightClickY;
     var rightClickPageX, rightClickPageY;
     var clientX, clientY;
+    var rightClickPosition;
+    var welldatas;
     $(function () {
+        $.post('/water/csite/getWarning.shtml', {"pid":${pid}}, function (datas) {
+            welldatas = datas;
+            $.each(datas.pwell, function (index, pwell) {
+                $("#wellselect").append("<option value=pwell'" + pwell.id + "'>" + pwell.name + "</option>");
+            })
+        })
         $('#zoom-marker-img').on("contextmenu", function (ev) {
             var markernames = document.getElementById("markernames");
             markernames.style.display = "none";
@@ -140,17 +152,50 @@
         })
         $("#zoom-marker-img").on("zoom_marker_mouse_click", function (event, position) {
             console.log("Mouse click on: " + JSON.stringify(position));
-            $('#zoom-marker-img').zoomMarker_AddMarker({
-                icon:'well-icon pwell red',
-                x: position.x,
-                y: position.y,
-            });
+            rightClickPosition = position;
         });
+        $("#wellselect").change(function () {
+            var markerList = $('#zoom-marker-img').zoomMarker_markerList();
+            $(markerList).each(function (index, element) {
+                if (element.param.x == rightClickPosition.x && element.param.y == rightClickPosition.y) {
+                    $('#zoom-marker-img').zoomMarker_RemoveMarker(element.id);
+                }
+            });
+        })
     })
+
+    function addMarker() {
+        var val = $("#wellselect").val();
+        var welltype = val.substring(0, 5);
+        var id = val.substring(5);
+        var marker = new Object();
+        marker.x = rightClickPosition.x;
+        marker.y = rightClickPosition.y;
+        marker.welltype = welltype;
+        marker.wellid = id;
+        var icon = 'well-icon pwell grey';
+        $.each(welldatas[welltype], function (index, elem) {
+            if (elem.id == id){
+                icon = 'well-icon pwell'
+            }
+        })
+        var markernames = document.getElementById("markernames");
+        markernames.style.display = "none";
+        $('#zoom-marker-img').zoomMarker_AddMarker({
+            icon: icon,
+            x: rightClickPosition.x,
+            y: rightClickPosition.y,
+        });
+    }
+
+    function cancleMarker() {
+        var markernames = document.getElementById("markernames");
+        markernames.style.display = "none";
+    }
 </script>
 <div class="row" id="edittable" style="display:none;">
     <div class="col-lg-12 col-sm-12">
-        <section class="panel" >
+        <section class="panel">
             <header class="panel-heading">
                 <span id="edittile"></span>
                 <span class="tools pull-right">
@@ -168,17 +213,15 @@
 </div>
 <div id="menu">
     <ul>
-        <li id="addMarker">添加降水井</li>
+        <li id="addMarker">添加井</li>
     </ul>
 </div>
 <div id="markernames">
-    <select id="dewartselect">
-        <option>选择降水井</option>
-        <option value="abc">123</option>
-        <option>123</option>
+    <select id="wellselect">
+        <option>请选择</option>
     </select>
     <div>
-        <div id="save" style="float : left">确定 |</div>
-        <div id="cancle" style="float : left">取消</div>
+        <button id="save" onclick="addMarker()" style="float : left">确定</button>
+        <button id="cancle" onclick="cancleMarker()" style="float : left">取消</button>
     </div>
 </div>

@@ -47,6 +47,7 @@ public class ProjectImgController {
         setMenu(model, request);
         String csiteID = request.getParameter("cid");
         request.setAttribute("activeFun", "projectimg");
+        model.addAttribute("pid", csiteID);
         if (StringUtils.isNotBlank(csiteID)) {
             String[] filed = {"csite.id"};
             String[] values = {csiteID};
@@ -79,12 +80,6 @@ public class ProjectImgController {
                     hasRight = true;
                 }
                 model.addAttribute("hasRight", hasRight);
-                String ctype = request.getParameter("ctype");
-                //手机版
-                if (StringUtils.isNotBlank(ctype)) {
-                    model.addAttribute("project", csite);
-                    return "phone-pwells";
-                }
             } catch (Exception e) {
                 LOGGER.debug(e.getMessage());
             }
