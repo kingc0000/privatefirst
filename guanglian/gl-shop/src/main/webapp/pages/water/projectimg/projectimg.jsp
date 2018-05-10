@@ -61,25 +61,25 @@
     $(document).ready(function () {
         var markers = [];
         <c:if test="${not empty projectImgs[0].pMarkers}">
-            <c:forEach items="${projectImgs[0].pMarkers}" var="m" >
-            var icon = '';
-            <c:if test="${m.id == 1}">
-            icon = ' well-icon dewell grey'
-            </c:if>
-            <c:if test="${m.id == 2}">
-            icon = ' well-icon dewell red'
-            </c:if>
-            var marker = {
-                icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
-                    value: ${m.well.name},
-                    offsetX: 20,
-                    style: {
-                        "border-color": "#86df5f"
-                    }
+        <c:forEach items="${projectImgs[0].pMarkers}" var="m" >
+        var icon = '';
+        <c:if test="${m.id == 1}">
+        icon = ' well-icon dewell grey'
+        </c:if>
+        <c:if test="${m.id == 2}">
+        icon = ' well-icon dewell red'
+        </c:if>
+        var marker = {
+            icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
+                value: ${m.well.name},
+                offsetX: 20,
+                style: {
+                    "border-color": "#ff8355"
                 }
-            };
-            markers.push(marker)
-            </c:forEach>
+            }
+        };
+        markers.push(marker)
+        </c:forEach>
         </c:if>
         $('#zoom-marker-img').zoomMarker({
             src: "${projectImgs[0].url}",
@@ -176,11 +176,13 @@
             var val = $("#wellselect option:selected").val();
             var welltype = val.substring(0, 5);
             var id = val.substring(5);
-            var marker = new Object();
-            marker.x = rightClickPosition.x;
-            marker.y = rightClickPosition.y;
-            marker.welltype = welltype;
-            marker.wellid = id;
+            var marker = {
+                markerX: rightClickPosition.x,
+                markerY: rightClickPosition.y,
+                markerType: welltype,
+                well: {id: id},
+                projectImg: {id:${projectImgs[0].id}}
+            }
             var dialog = '';
             var icon = 'well-icon pwell grey';
             var hasMarked = false;
@@ -208,9 +210,19 @@
                         value: dialog,
                         offsetX: 20,
                         style: {
-                            "border-color": "#86df5f"
+                            "border-color": "#ff8355"
                         }
                     },
+                });
+                $.ajax({
+                    url : 'save.shtml',
+                    type : "POST",
+                    data : JSON.stringify(marker),
+                    dataType: 'json',
+                    contentType:'application/json;charset=UTF-8',
+                    success : function(result) {
+                        console.log(result);
+                    }
                 });
             } else {
                 var markernames = document.getElementById("markernames");

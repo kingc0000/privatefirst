@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.infiniteautomation:modbus4j:GL-0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://D:/apache-maven-3.5.0/repository/com/infiniteautomation/modbus4j/GL-0.1-SNAPSHOT/modbus4j-GL-0.1-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/apache-maven-3.5.0/repository/com/infiniteautomation/modbus4j/GL-0.1-SNAPSHOT/modbus4j-GL-0.1-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/apache-maven-3.5.0/repository/com/infiniteautomation/modbus4j/GL-0.1-SNAPSHOT/modbus4j-GL-0.1-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
