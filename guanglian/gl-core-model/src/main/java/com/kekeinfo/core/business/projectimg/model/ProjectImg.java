@@ -40,7 +40,7 @@ public class ProjectImg extends KekeinfoEntity<Long, ProjectImg> {
     private static final long serialVersionUID = -7750422391607680027L;
 
     @Id
-    @Column(name = "PROJECTIMG_ID", nullable = false)
+    @Column(name = "PROJECTIMG_ID", unique=true, nullable=false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName =
             "SEQ_COUNT", pkColumnValue = "PROJECTIMG_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")

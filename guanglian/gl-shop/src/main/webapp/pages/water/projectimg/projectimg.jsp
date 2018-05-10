@@ -62,20 +62,164 @@
         var markers = [];
         <c:if test="${not empty projectImgs[0].pMarkers}">
         <c:forEach items="${projectImgs[0].pMarkers}" var="m" >
-        var icon = '';
-        <c:if test="${m.id == 1}">
-        icon = ' well-icon dewell grey'
-        </c:if>
-        <c:if test="${m.id == 2}">
-        icon = ' well-icon dewell red'
-        </c:if>
+        var icon = 'well-icon ${m.markerType} ';
+        var sts = ${m.well.powerStatus}; //0正常，1关闭，2故障
+        var dataSts = ${m.well.dataStatus}; //0正常，1，2，3告警
+        if (sts == 0 && dataSts > 0) {
+            sts = 3;
+        }
+        if (sts == 0) {
+            icon += ' '
+        } else if (sts == 1) {
+            icon += ' grey'
+        } else if (sts == 2) {
+            icon += ' red'
+        } else if (sts == 3) {
+            icon += ' orange'
+        } else {
+            icon += ' white'
+        }
         var marker = {
             icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
-                value: ${m.well.name},
+                value: '${m.well.name}',
                 offsetX: 20,
                 style: {
                     "border-color": "#ff8355"
-                }
+                },
+                type: '${m.markerType}',
+                wellid: '${m.well.id}'
+            }
+        };
+        markers.push(marker)
+        </c:forEach>
+        </c:if>
+        <c:if test="${not empty projectImgs[0].dmMarkers} " >
+        <c:forEach items="${projectImgs[0].dmMarkers}" var="m" >
+        var icon = 'well-icon ${m.markerType} ';
+        var sts = ${m.well.powerStatus}; //0正常，1关闭，2故障
+        var dataSts = ${m.well.dataStatus}; //0正常，1，2，3告警
+        if (sts == 0 && dataSts > 0) {
+            sts = 3;
+        }
+        if (sts == 0) {
+            icon += ' '
+        } else if (sts == 1) {
+            icon += ' grey'
+        } else if (sts == 2) {
+            icon += ' red'
+        } else if (sts == 3) {
+            icon += ' orange'
+        } else {
+            icon += ' white'
+        }
+        var marker = {
+            icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
+                value: '${m.well.name}',
+                offsetX: 20,
+                style: {
+                    "border-color": "#ff8355"
+                },
+                type: '${m.markerType}',
+                wellid: '${m.well.id}'
+            }
+        };
+        markers.push(marker)
+        </c:forEach>
+        </c:if>
+        <c:if test="${not empty projectImgs[0].dwMarkers}">
+        <c:forEach items="${projectImgs[0].dwMarkers}" var="m" >
+        var icon = 'well-icon dewell';
+        var sts = ${m.well.powerStatus}; //0正常，1关闭，2故障
+        var dataSts = ${m.well.dataStatus}; //0正常，1，2，3告警
+        if (sts == 0 && dataSts > 0) {
+            sts = 3;
+        }
+        if (sts == 0) {
+            icon += ' '
+        } else if (sts == 1) {
+            icon += ' grey'
+        } else if (sts == 2) {
+            icon += ' red'
+        } else if (sts == 3) {
+            icon += ' orange'
+        } else {
+            icon += ' white'
+        }
+        var marker = {
+            icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
+                value: '${m.well.name}',
+                offsetX: 20,
+                style: {
+                    "border-color": "#ff8355"
+                },
+                type: '${m.markerType}',
+                wellid: '${m.well.id}'
+            }
+        };
+        markers.push(marker)
+        </c:forEach>
+        </c:if>
+        <c:if test="${not empty projectImgs[0].iMarkers}">
+        <c:forEach items="${projectImgs[0].iMarkers}" var="m" >
+        var icon = 'well-icon ${m.markerType} ';
+        var sts = ${m.well.powerStatus}; //0正常，1关闭，2故障
+        var dataSts = ${m.well.dataStatus}; //0正常，1，2，3告警
+        if (sts == 0 && dataSts > 0) {
+            sts = 3;
+        }
+        if (sts == 0) {
+            icon += ' '
+        } else if (sts == 1) {
+            icon += ' grey'
+        } else if (sts == 2) {
+            icon += ' red'
+        } else if (sts == 3) {
+            icon += ' orange'
+        } else {
+            icon += ' white'
+        }
+        var marker = {
+            icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
+                value: '${m.well.name}',
+                offsetX: 20,
+                style: {
+                    "border-color": "#ff8355"
+                },
+                type: '${m.markerType}',
+                wellid: '${m.well.id}'
+            }
+        };
+        markers.push(marker)
+        </c:forEach>
+        </c:if>
+        <c:if test="${not empty projectImgs[0].oMarkers}">
+        <c:forEach items="${projectImgs[0].oMarkers}" var="m" >
+        var icon = 'well-icon ${m.markerType} ';
+        var sts = ${m.well.powerStatus}; //0正常，1关闭，2故障
+        var dataSts = ${m.well.dataStatus}; //0正常，1，2，3告警
+        if (sts == 0 && dataSts > 0) {
+            sts = 3;
+        }
+        if (sts == 0) {
+            icon += ' '
+        } else if (sts == 1) {
+            icon += ' grey'
+        } else if (sts == 2) {
+            icon += ' red'
+        } else if (sts == 3) {
+            icon += ' orange'
+        } else {
+            icon += ' white'
+        }
+        var marker = {
+            icon: icon, x: ${m.markerX}, y: ${m.markerY}, dialog: {
+                value: '${m.well.name}',
+                offsetX: 20,
+                style: {
+                    "border-color": "#ff8355"
+                },
+                type: '${m.markerType}',
+                wellid: '${m.well.id}'
             }
         };
         markers.push(marker)
@@ -102,6 +246,18 @@
             $.each(datas.pwell, function (index, pwell) {
                 $("#wellselect").append("<option value='pwell" + pwell.id + "'>" + pwell.name + "</option>");
             })
+            $.each(datas.dewell, function (index, dwell) {
+                $("#wellselect").append("<option value='dwell" + dwell.id + "'>" + dwell.name + "</option>");
+            })
+            $.each(datas.owell, function (index, owell) {
+                $("#wellselect").append("<option value='owell" + owell.id + "'>" + owell.name + "</option>");
+            })
+            $.each(datas.iwell, function (index, iwell) {
+                $("#wellselect").append("<option value='iwell" + iwell.id + "'>" + iwell.name + "</option>");
+            })
+            $.each(datas.ewell, function (index, ewell) {
+                $("#wellselect").append("<option value='ewell" + ewell.id + "'>" + ewell.name + "</option>");
+            })
         })
         $('#zoom-marker-img').on("contextmenu", function (ev) {
             var markernames = document.getElementById("markernames");
@@ -121,6 +277,23 @@
             if (confirm("确定要删除" + marker.param.dialog.value + "标记吗？")) {
                 $('#zoom-marker-img').zoomMarker_RemoveMarker(marker.id);
             }
+            var name = marker.param.dialog.value;
+            var type = marker.param.dialog.type;
+            var wellid = marker.param.dialog.wellid;
+            var marker = new Object();
+            marker.wellid = wellid;
+            marker.markerType = type;
+            marker.name = name
+            $.ajax({
+                url: 'delete.shtml',
+                type: "POST",
+                data: JSON.stringify(marker),
+                dataType: 'json',
+                contentType: 'application/json;charset=UTF-8',
+                success: function (result) {
+                    console.log(result);
+                }
+            });
         });
         $("#addMarker").on('click', function (e) {
             $('#zoom-marker-img').trigger("zoom_marker_mouse_click", {
@@ -174,24 +347,59 @@
                 }
             });
             var val = $("#wellselect option:selected").val();
+            var name = $("#wellselect option:selected").text();
             var welltype = val.substring(0, 5);
             var id = val.substring(5);
             var marker = {
                 markerX: rightClickPosition.x,
                 markerY: rightClickPosition.y,
                 markerType: welltype,
+                name: name,
                 well: {id: id},
                 projectImg: {id:${projectImgs[0].id}}
             }
             var dialog = '';
-            var icon = 'well-icon pwell grey';
+            var icon = 'well-icon ';
             var hasMarked = false;
-            $.each(welldatas[welltype], function (index, elem) {
+            var welldatum = [];
+            if (welltype == "dwell") {
+                welldatum = welldatas["dewell"];
+            } else {
+                welldatum = welldatas[welltype];
+            }
+            $.each(welldatum, function (index, elem) {
+                console.log(elem.id == id)
                 if (elem.id == id) {
-                    icon = 'well-icon pwell';
+                    if (welltype == "dwell") {
+                        icon = 'well-icon dewell';
+                    } else {
+                        icon = 'well-icon ' + welltype;
+                    }
+                    var sts = elem.powerStatus; //0正常，1关闭，2故障
+                    var dataSts = elem.dataStatus; //0正常，1，2，3告警
+                    if (sts == 0 && dataSts > 0) {
+                        sts = 3;
+                    }
+                    if (sts == 0) {
+                        icon += ' '
+                    } else if (sts == 1) {
+                        icon += ' grey'
+                    } else if (sts == 2) {
+                        icon += ' red'
+                    } else if (sts == 3) {
+                        icon += ' orange'
+                    } else {
+                        icon += ' white'
+                    }
                     dialog = elem.name;
                     $(markerList).each(function (index, element) {
-                        if (element.param.icon.indexOf(welltype) != -1 && element.param.dialog.value == elem.name) {
+                        var icontype ='';
+                        if (welltype == "dwell") {
+                            icontype = 'dewell';
+                        } else {
+                            icontype = welltype
+                        }
+                        if (element.param.icon.indexOf(icontype) != -1 && element.param.dialog.value == elem.name) {
                             alert(dialog + "已经添加过标记！")
                             hasMarked = true;
                             return false;
@@ -211,16 +419,18 @@
                         offsetX: 20,
                         style: {
                             "border-color": "#ff8355"
-                        }
+                        },
+                        type: welltype,
+                        wellid: id
                     },
                 });
                 $.ajax({
-                    url : 'save.shtml',
-                    type : "POST",
-                    data : JSON.stringify(marker),
+                    url: 'save.shtml',
+                    type: "POST",
+                    data: JSON.stringify(marker),
                     dataType: 'json',
-                    contentType:'application/json;charset=UTF-8',
-                    success : function(result) {
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function (result) {
                         console.log(result);
                     }
                 });

@@ -32,7 +32,7 @@ public class PumpWellMarker extends KekeinfoEntity<Long, PumpWellMarker> {
     private static final long serialVersionUID = -3969506585013882687L;
 
     @Id
-    @Column(name = "PUMPWELLMARKER_ID", nullable = false)
+    @Column(name = "PUMPWELLMARKER_ID", unique=true, nullable=false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName =
             "SEQ_COUNT", pkColumnValue = "PUMPWELLMARKER_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")

@@ -5,6 +5,9 @@ package com.kekeinfo.core.business.projectimg.model;
  */
 public class BaseMarker {
 
+    private Long id;
+    private Long wellid;
+
     private String markerX;
 
     private String markerY;
@@ -16,6 +19,22 @@ public class BaseMarker {
     private BaseWell well;
 
     private BaseProjecImg projectImg;
+
+    public Long getWellid() {
+        return wellid;
+    }
+
+    public void setWellid(Long wellid) {
+        this.wellid = wellid;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getMarkerX() {
         return markerX;

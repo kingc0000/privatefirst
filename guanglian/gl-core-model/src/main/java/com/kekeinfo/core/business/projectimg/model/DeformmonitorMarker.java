@@ -33,7 +33,7 @@ public class DeformmonitorMarker extends KekeinfoEntity<Long, DeformmonitorMarke
     private static final long serialVersionUID = 8549449301540419158L;
 
     @Id
-    @Column(name = "DEFORMMONITORMARKER_ID", nullable = false)
+    @Column(name = "DEFORMMONITORMARKER_ID", unique=true, nullable=false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName =
             "SEQ_COUNT", pkColumnValue = "DEFORMMONITORMARKER_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")

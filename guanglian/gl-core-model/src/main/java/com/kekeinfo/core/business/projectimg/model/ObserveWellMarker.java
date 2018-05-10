@@ -32,7 +32,7 @@ public class ObserveWellMarker extends KekeinfoEntity<Long, ObserveWellMarker> {
     private static final long serialVersionUID = 4322747400004157948L;
 
     @Id
-    @Column(name = "OBSERVEWELLMARKER_ID", nullable = false)
+    @Column(name = "OBSERVEWELLMARKER_ID", unique=true, nullable=false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName =
             "SEQ_COUNT", pkColumnValue = "OBSERVEWELLMARKER_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")

@@ -32,7 +32,7 @@ public class DewateringMarker extends KekeinfoEntity<Long, DewateringMarker> {
     private static final long serialVersionUID = 4048050641859661550L;
 
     @Id
-    @Column(name = "DEWATERINGMARKER_ID", nullable = false)
+    @Column(name = "DEWATERINGMARKER_ID", unique=true, nullable=false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName =
             "SEQ_COUNT", pkColumnValue = "DEWATERINGMARKER_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")

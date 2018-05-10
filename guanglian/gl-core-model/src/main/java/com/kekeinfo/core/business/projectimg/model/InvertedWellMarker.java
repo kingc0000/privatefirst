@@ -32,7 +32,7 @@ public class InvertedWellMarker extends KekeinfoEntity<Long, InvertedWellMarker>
     private static final long serialVersionUID = -985106036490385862L;
 
     @Id
-    @Column(name = "INVERTEDWELLMARKER_ID", nullable = false)
+    @Column(name = "INVERTEDWELLMARKER_ID", unique=true, nullable=false)
     @TableGenerator(name = "TABLE_GEN", table = "SM_SEQUENCER", pkColumnName = "SEQ_NAME", valueColumnName =
             "SEQ_COUNT", pkColumnValue = "INVERTEDWELLMARKER_SEQ_NEXT_VAL")
     @GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
