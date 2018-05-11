@@ -12,31 +12,27 @@ import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.kekeinfo.core.business.common.model.Criteria;
 import com.kekeinfo.core.business.common.model.Entitites;
+import com.kekeinfo.core.business.constructionsite.model.ConstructionSite;
+import com.kekeinfo.core.business.csite.service.CSiteService;
 import com.kekeinfo.core.business.deformmonitor.model.Deformmonitor;
 import com.kekeinfo.core.business.deformmonitor.service.DeformmonitorService;
 import com.kekeinfo.core.business.dewatering.model.Dewatering;
 import com.kekeinfo.core.business.dewatering.service.DewateringService;
-import com.kekeinfo.core.business.generic.exception.ServiceException;
-import com.kekeinfo.core.business.generic.service.KekeinfoEntityServiceImpl;
+import com.kekeinfo.core.business.image.model.Images;
 import com.kekeinfo.core.business.invertedwell.model.Invertedwell;
 import com.kekeinfo.core.business.invertedwell.service.InvertedwellService;
 import com.kekeinfo.core.business.observewell.model.Observewell;
 import com.kekeinfo.core.business.observewell.service.ObservewellService;
-import com.kekeinfo.core.business.project.model.Project;
 import com.kekeinfo.core.business.projectimg.model.BaseMarker;
 import com.kekeinfo.core.business.projectimg.model.DeformmonitorMarker;
 import com.kekeinfo.core.business.projectimg.model.DewateringMarker;
@@ -53,13 +49,10 @@ import com.kekeinfo.core.business.projectimg.service.PumpWellMarkerService;
 import com.kekeinfo.core.business.pumpwell.model.Pumpwell;
 import com.kekeinfo.core.business.pumpwell.service.PumpwellService;
 import com.kekeinfo.core.business.user.model.Group;
-import com.kekeinfo.core.business.user.model.User;
 import com.kekeinfo.core.business.user.service.GroupService;
 import com.kekeinfo.core.utils.ajax.AjaxResponse;
-import com.kekeinfo.web.admin.controller.pumpwell.PWellController;
 import com.kekeinfo.web.constants.Constants;
 import com.kekeinfo.web.entity.UnderWater;
-import com.kekeinfo.web.utils.BeanUtils;
 import com.kekeinfo.web.utils.PNodeUtils;
 import com.kekeinfo.web.utils.WebApplicationCacheUtils;
 
@@ -113,6 +106,9 @@ public class ProjectImgController {
     @Autowired
     private DeformmonitorService deformmonitorService;
 
+    @Autowired
+    private CSiteService cSiteService;
+
     @PreAuthorize("hasRole('EDIT-PROJECT')")
     @RequestMapping("/water/projectimg/list.html")
     public String getImg(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -120,18 +116,6 @@ public class ProjectImgController {
         String csiteID = request.getParameter("cid");
         request.setAttribute("activeFun", "projectimg");
         model.addAttribute("pid", csiteID);
-
-        if (StringUtils.isNotBlank(csiteID)) {
-            String[] filed = {"csite.id"};
-            String[] values = {csiteID};
-            Entitites<ProjectImg> projectImgEntitites = projectImgService.getListByAttributes(filed, values, null);
-            List<ProjectImg> projectImgs = projectImgEntitites.getEntites();
-            if (CollectionUtils.isNotEmpty(projectImgs)) {
-                model.addAttribute("projectImgs", projectImgs);
-            }else {
-                return "redirect:/water/csite/wlist.html?pid=" + csiteID;
-            }
-        }
         if (!StringUtils.isBlank(csiteID)) {
             try {
                 //
@@ -157,6 +141,26 @@ public class ProjectImgController {
                     hasRight = true;
                 }
                 model.addAttribute("hasRight", hasRight);
+                String[] filed = {"csite.id"};
+                String[] values = {csiteID};
+                Entitites<ProjectImg> projectImgEntitites = projectImgService.getListByAttributes(filed, values, null);
+                List<ProjectImg> projectImgs = projectImgEntitites.getEntites();
+                if (CollectionUtils.isEmpty(projectImgs)) {
+                    ConstructionSite c =cSiteService.getByCid(Long.parseLong(csiteID));
+                    List<Images> images = c.getImages();
+                    if (CollectionUtils.isNotEmpty(images)) {
+                        ProjectImg projectImg = new ProjectImg();
+                        projectImg.setCsite(c);
+                        projectImg.setUrl(images.get(0).getJpeg());
+                        projectImgs.add(projectImg);
+                        projectImgService.save(projectImg);
+                    }
+                }
+                if (CollectionUtils.isNotEmpty(projectImgs)) {
+                    model.addAttribute("projectImgs", projectImgs);
+                } else {
+                    return "redirect:/water/csite/wlist.html?pid=" + csiteID;
+                }
             } catch (Exception e) {
                 LOGGER.debug(e.getMessage());
             }
@@ -240,6 +244,7 @@ public class ProjectImgController {
         String returnString = resp.toJSONString();
         return returnString;
     }
+
     @PreAuthorize("hasRole('EDIT-PROJECT')")
     @RequestMapping(value = "/water/projectimg/delete.shtml", method = RequestMethod.POST, produces =
             "application/json; charset=utf-8", consumes = "application/json")
