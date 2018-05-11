@@ -61,7 +61,7 @@ function gotoProject(pid){
 											<li class="<c:if test="${activePid==project.id&&activeFun=='camera'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/camera/plist.html?cid=${project.id }"/>">摄像头管理</a></li>
 											<li
 													class="<c:if test="${activePid==project.id&&activeFun=='camera'}"> active
-</c:if>"><a class="needsclick" href="<c:url value="/water/camera/plist.html?cid=${project.id }"/>">图纸标记</a></li>
+</c:if>"><a class="needsclick" href="<c:url value="/water/projectimg/list.html?cid=${project.id }"/>">图纸标记</a></li>
 											<li
 													class="<c:if
 													test="${activePid==project.id&&activeFun=='camera'}"> active
