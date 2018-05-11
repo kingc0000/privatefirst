@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
@@ -125,7 +126,11 @@ public class ProjectImgController {
             String[] values = {csiteID};
             Entitites<ProjectImg> projectImgEntitites = projectImgService.getListByAttributes(filed, values, null);
             List<ProjectImg> projectImgs = projectImgEntitites.getEntites();
-            model.addAttribute("projectImgs", projectImgs);
+            if (CollectionUtils.isNotEmpty(projectImgs)) {
+                model.addAttribute("projectImgs", projectImgs);
+            }else {
+                return "redirect:/water/csite/wlist.html?pid=" + csiteID;
+            }
         }
         if (!StringUtils.isBlank(csiteID)) {
             try {
@@ -157,7 +162,7 @@ public class ProjectImgController {
             }
 
         } else {
-            return "csite-wlist";
+            return "redirect:/water/csite/wlist.html?pid=" + csiteID;
         }
         return "warter-projectimg";
     }

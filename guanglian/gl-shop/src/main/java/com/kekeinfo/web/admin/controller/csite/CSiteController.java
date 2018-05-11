@@ -16,6 +16,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
@@ -55,6 +56,8 @@ import com.kekeinfo.core.business.observewell.service.ObservewellService;
 import com.kekeinfo.core.business.point.model.Basepoint;
 import com.kekeinfo.core.business.project.model.Project;
 import com.kekeinfo.core.business.project.service.ProjectService;
+import com.kekeinfo.core.business.projectimg.model.ProjectImg;
+import com.kekeinfo.core.business.projectimg.service.ProjectImgService;
 import com.kekeinfo.core.business.user.model.Group;
 import com.kekeinfo.core.business.user.model.User;
 import com.kekeinfo.core.business.user.service.GroupService;
@@ -116,6 +119,8 @@ public class CSiteController {
 	@Autowired private PNodeUtils pnodeUtils;
 	@Autowired
 	private WebApplicationCacheUtils webCacheUtils;
+	@Autowired
+	private ProjectImgService projectImgService;
 	@PreAuthorize("hasRole('VIEW-PROJECT')")
 	@RequestMapping(value="/water/csite/list.html", method=RequestMethod.GET)
 	public String displayStores(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -496,6 +501,13 @@ public class CSiteController {
 					for(DepartmentNode p:pNodes){
 						userDetailsService.removeSession(p.getUser());
 					}
+				}
+				// 保存第一张图片作为标记图片（目前支持一张）
+				if (CollectionUtils.isNotEmpty(csite.getImages())) {
+					ProjectImg projectImg = new ProjectImg();
+					projectImg.setUrl(csite.getImages().get(0).getJpeg());
+					projectImg.setCsite(csite);
+					projectImgService.save(projectImg);
 				}
 			}
 			//

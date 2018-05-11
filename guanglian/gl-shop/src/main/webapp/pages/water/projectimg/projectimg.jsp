@@ -30,31 +30,31 @@
     }
 
     #menu {
-        width: 100px;
-        position: absolute;
+        background-color: #ff8355;
         display: none;
-        z-index: 1;
-    }
-
-    #menu ul {
-        width: 100%;
-        list-style: none;
-        border: 2px solid #000000;
-        border-bottom: 0px;
-    }
-
-    #menu ul li {
-        height: 30px;
-        font-size: 16px;
-        color: #ccaf04;
-        line-height: 30px;
+        position: absolute;
+        padding-left: 10px;
+        padding-right: 10px;
+        color: #fff;
+        border-color: #ff8355 !important;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
         text-align: center;
-        border-bottom: 2px solid #000000;
+        height: 26px;
+        line-height: 26px;
     }
 
-    select {
-        width: 80px;
-        height: 20px;
+    select{
+        width: 90px;
+        height: 30px;
+        color: #000;
+        border: solid 1px #000;
+        appearance:none;
+        -moz-appearance:none;
+        -webkit-appearance:none;
+        font-size: 15px;
+        overflow: hidden;
     }
 </style>
 <script type="text/javascript">
@@ -226,7 +226,7 @@
         </c:forEach>
         </c:if>
         $('#zoom-marker-img').zoomMarker({
-            src: "${projectImgs[0].url}",
+            src: "/files/previewbyext/${projectImgs[0].url}?ftype=",
             rate: 0.2,
             markers: markers
         });
@@ -234,6 +234,8 @@
     window.onclick = function (e) {
         var menu = document.getElementById("menu");
         menu.style.display = "none";
+        var markernames = document.getElementById("markernames");
+        markernames.style.display = "none";
     }
     var rightClickX, rightClickY;
     var rightClickPageX, rightClickPageY;
@@ -295,7 +297,11 @@
                 }
             });
         });
-        $("#addMarker").on('click', function (e) {
+        $("#markernames").bind('click', function (e) {
+            e.stopPropagation();
+        })
+        $("#addMarker").bind('click', function (e) {
+            e.stopPropagation();
             $('#zoom-marker-img').trigger("zoom_marker_mouse_click", {
                 pageX: rightClickPageX,
                 pageY: rightClickPageY,
@@ -339,7 +345,8 @@
             console.log("Mouse click on: " + JSON.stringify(position));
             rightClickPosition = position;
         });
-        $("#wellselect").change(function () {
+        $("#wellselect").change(function (e) {
+            e.stopPropagation();
             var markerList = $('#zoom-marker-img').zoomMarker_markerList();
             $(markerList).each(function (index, element) {
                 if (element.param.x == rightClickPosition.x && element.param.y == rightClickPosition.y) {
@@ -367,6 +374,7 @@
             } else {
                 welldatum = welldatas[welltype];
             }
+            $("#wellselect").val('');
             $.each(welldatum, function (index, elem) {
                 console.log(elem.id == id)
                 if (elem.id == id) {
@@ -455,18 +463,18 @@
         </section>
     </div>
 </div>
-<div class="row">
+<div class="row" id="imgbody">
     <div id="zoom-marker-div" class="zoom-marker-div">
         <img class="zoom-marker-img" id="zoom-marker-img" alt="..." name="viewArea" draggable="false"/>
     </div>
 </div>
 <div id="menu">
     <ul>
-        <li id="addMarker">添加井</li>
+        <li id="addMarker">添加标记</li>
     </ul>
 </div>
 <div id="markernames">
     <select id="wellselect">
-        <option>请选择</option>
+        <option selected="selected" value="">请选择编号</option>
     </select>
 </div>

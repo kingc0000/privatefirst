@@ -167,4 +167,12 @@ public class ProjectImg extends KekeinfoEntity<Long, ProjectImg> {
     public void setPicType(String picType) {
         this.picType = picType;
     }
+
+    public ConstructionSite getCsite() {
+        return csite;
+    }
+
+    public void setCsite(ConstructionSite csite) {
+        this.csite = csite;
+    }
 }

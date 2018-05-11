@@ -287,7 +287,6 @@
             that.trigger("zoom_marker_click", markerObj);
         });
         // 悬浮监听器
-        if (typeof(marker.dialog) != 'undefined') {
             _marker.mousemove(function (e) {
                 options.hover_marker_id = markerObj.id;
                 dialog.empty().append(marker.dialog.value || '').css(marker.dialog.style || {}).show().offset({
@@ -299,7 +298,6 @@
                 options.hover_marker_id = null;
                 dialog.hide();
             });
-        }
         ;
         that.parent().append(_marker);
         markerList.push(markerObj);
