@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -109,6 +110,47 @@ public class ProjectImgController {
     @Autowired
     private CSiteService cSiteService;
 
+    @PreAuthorize("hasRole('VIEW-PROJECT')")
+    @RequestMapping(value = {"/water/projectimg/previewbyext/{fileName}.{extension}"}, method = RequestMethod.GET)
+    public String previewFileByExt(@PathVariable final String fileName, @PathVariable String extension,
+            HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String ftype = request.getParameter("ftype");
+        return "redirect:/files/previewbyext/" + fileName + "." + extension + "?ftype=" + ftype;
+    }
+
+    @PreAuthorize("hasRole('EDIT-PROJECT')")
+    @RequestMapping(value = "/water/projectimg/getwellprofile.shtml", method = {RequestMethod.GET,
+            RequestMethod.POST}, produces = " application/json; charset=utf-8")
+    public @ResponseBody
+    String getWellProfile(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String csiteID = request.getParameter("cid");
+        if (!StringUtils.isBlank(csiteID)) {
+            String[] filed = {"csite.id"};
+            String[] values = {csiteID};
+            Entitites<ProjectImg> projectImgEntitites = projectImgService.getListByAttributes(filed, values, null);
+            List<ProjectImg> projectImgs = projectImgEntitites.getEntites();
+            if (CollectionUtils.isEmpty(projectImgs)) {
+                ConstructionSite c = cSiteService.getByCid(Long.parseLong(csiteID));
+                List<Images> images = c.getImages();
+                if (CollectionUtils.isNotEmpty(images)) {
+                    ProjectImg projectImg = new ProjectImg();
+                    projectImg.setCsite(c);
+                    projectImg.setUrl(images.get(0).getJpeg());
+                    projectImgs.add(projectImg);
+                    projectImgService.save(projectImg);
+                }
+            }
+            if (CollectionUtils.isNotEmpty(projectImgs)) {
+                ObjectMapper mapper = new ObjectMapper();
+                String json = mapper.writeValueAsString(projectImgs);
+                return json;
+            } else {
+                return "";
+            }
+        }
+        return "";
+    }
+
     @PreAuthorize("hasRole('EDIT-PROJECT')")
     @RequestMapping("/water/projectimg/list.html")
     public String getImg(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -146,7 +188,7 @@ public class ProjectImgController {
                 Entitites<ProjectImg> projectImgEntitites = projectImgService.getListByAttributes(filed, values, null);
                 List<ProjectImg> projectImgs = projectImgEntitites.getEntites();
                 if (CollectionUtils.isEmpty(projectImgs)) {
-                    ConstructionSite c =cSiteService.getByCid(Long.parseLong(csiteID));
+                    ConstructionSite c = cSiteService.getByCid(Long.parseLong(csiteID));
                     List<Images> images = c.getImages();
                     if (CollectionUtils.isNotEmpty(images)) {
                         ProjectImg projectImg = new ProjectImg();
@@ -169,6 +211,15 @@ public class ProjectImgController {
             return "redirect:/water/csite/wlist.html?pid=" + csiteID;
         }
         return "warter-projectimg";
+    }
+
+    @PreAuthorize("hasRole('EDIT-PROJECT')")
+    @RequestMapping(value = "/water/projectimg/getWarning.shtml", method = {RequestMethod.GET,
+            RequestMethod.POST}, produces = " application/json; charset=utf-8")
+    public String getWarning(Model model, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        setMenu(model, request);
+        String csiteID = request.getParameter("cid");
+        return "redirect:/water/csite/getWarning.shtml?pid=" + csiteID;
     }
 
     private void setMenu(Model model, HttpServletRequest request) throws Exception {
@@ -197,7 +248,13 @@ public class ProjectImgController {
                 case "pwell":
                     PumpWellMarker pumpWellMarker = new PumpWellMarker();
                     org.springframework.beans.BeanUtils.copyProperties(marker, pumpWellMarker);
-                    Pumpwell pumpwell = pumpwellService.getById(marker.getWell().getId());
+                    Pumpwell pumpwell = pumpwellService.getByIdWithCSite(marker.getWell().getId());
+                    String wellDepth1 = String.valueOf(pumpwell.getPointInfo().getDeepWell());
+                    if (StringUtils.isNotBlank(wellDepth1) && !wellDepth1.equals("null")) {
+                        pumpWellMarker.setWellDepth(wellDepth1);
+                    } else {
+                        pumpWellMarker.setWellDepth("0");
+                    }
                     pumpWellMarker.setWell(pumpwell);
                     pumpWellMarker.setProjectImg(projectImg);
                     pumpWellMarkerService.save(pumpWellMarker);
@@ -205,7 +262,13 @@ public class ProjectImgController {
                 case "dwell":
                     DewateringMarker dewateringMarker = new DewateringMarker();
                     org.springframework.beans.BeanUtils.copyProperties(marker, dewateringMarker);
-                    Dewatering dewatering = dewateringService.getById(marker.getWell().getId());
+                    Dewatering dewatering = dewateringService.getByIdWithCSite(marker.getWell().getId());
+                    String wellDepth2 = String.valueOf(dewatering.getPointInfo().getDeepWell());
+                    if (StringUtils.isNotBlank(wellDepth2)&& !wellDepth2.equals("null")) {
+                        dewateringMarker.setWellDepth(wellDepth2);
+                    } else {
+                        dewateringMarker.setWellDepth("0");
+                    }
                     dewateringMarker.setWell(dewatering);
                     dewateringMarker.setProjectImg(projectImg);
                     dewateringMarkerService.save(dewateringMarker);
@@ -213,7 +276,13 @@ public class ProjectImgController {
                 case "owell":
                     ObserveWellMarker observeWellMarker = new ObserveWellMarker();
                     org.springframework.beans.BeanUtils.copyProperties(marker, observeWellMarker);
-                    Observewell observewell = observewellService.getById(marker.getWell().getId());
+                    Observewell observewell = observewellService.getByIdWithCSite(marker.getWell().getId());
+                    String wellDepth3 = String.valueOf(observewell.getPointInfo().getDeepWell());
+                    if (StringUtils.isNotBlank(wellDepth3) && !wellDepth3.equals("null")) {
+                        observeWellMarker.setWellDepth(wellDepth3);
+                    } else {
+                        observeWellMarker.setWellDepth("0");
+                    }
                     observeWellMarker.setWell(observewell);
                     observeWellMarker.setProjectImg(projectImg);
                     observeWellMarkerService.save(observeWellMarker);
@@ -221,7 +290,13 @@ public class ProjectImgController {
                 case "iwell":
                     InvertedWellMarker invertedWellMarker = new InvertedWellMarker();
                     org.springframework.beans.BeanUtils.copyProperties(marker, invertedWellMarker);
-                    Invertedwell invertedwell = invertedwellService.getById(marker.getWell().getId());
+                    Invertedwell invertedwell = invertedwellService.getByIdWithCSite(marker.getWell().getId());
+                    String wellDepth4 = String.valueOf(invertedwell.getPointInfo().getDeepWell());
+                    if (StringUtils.isNotBlank(wellDepth4) && !wellDepth4.equals("null")) {
+                        invertedWellMarker.setWellDepth(wellDepth4);
+                    } else {
+                        invertedWellMarker.setWellDepth("0");
+                    }
                     invertedWellMarker.setWell(invertedwell);
                     invertedWellMarker.setProjectImg(projectImg);
                     invertedWellMarkerService.save(invertedWellMarker);
@@ -229,7 +304,13 @@ public class ProjectImgController {
                 case "ewell":
                     DeformmonitorMarker deformmonitorMarker = new DeformmonitorMarker();
                     org.springframework.beans.BeanUtils.copyProperties(marker, deformmonitorMarker);
-                    Deformmonitor deformmonitor = deformmonitorService.getById(marker.getWell().getId());
+                    Deformmonitor deformmonitor = deformmonitorService.getByIdWithCSite(marker.getWell().getId());
+                    String wellDepth5 = String.valueOf(deformmonitor.getPointInfo().getDeepWell());
+                    if (StringUtils.isNotBlank(wellDepth5) && !wellDepth5.equals("null")) {
+                        deformmonitorMarker.setWellDepth(wellDepth5);
+                    } else {
+                        deformmonitorMarker.setWellDepth("0");
+                    }
                     deformmonitorMarker.setWell(deformmonitor);
                     deformmonitorMarker.setProjectImg(projectImg);
                     deformmonitorMarkerService.save(deformmonitorMarker);

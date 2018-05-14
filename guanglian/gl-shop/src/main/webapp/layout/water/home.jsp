@@ -357,7 +357,7 @@ $(function() {
      
      function addLocalNotficFailed(notificTime,num){
     	 $('#loading').hide();
-    	 toastr.error('工作安排同步失败!!!333');
+    	 toastr.error('工作安排同步失败!!!');
      };
 </script>
 </html>

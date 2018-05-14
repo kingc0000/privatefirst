@@ -26,7 +26,7 @@
 </appender>
        
 <logger name="com.kekeinfo.core" additivity="false">
-		<level value="info"/>
+		<level value="error"/>
 		<appender-ref ref="CORE" />
 </logger>
 
@@ -43,7 +43,7 @@
 
 <!-- root的作用是收集下面所有反馈上来的信息流并根据配置在root中appender进行输出，只要你在looger中配置了additivity="false"，就不会反馈到root中  -->  
 <logger name="com.kekeinfo.web" additivity="true">
-		<level value="info"/>
+		<level value="error"/>
 		<appender-ref ref="WEB" />
 </logger>
 
@@ -59,7 +59,7 @@
 </appender>
 
 <logger name="com.serotonin.modbus4j" additivity="true">
-		<level value="debug"/>
+		<level value="error"/>
 		<appender-ref ref="MODBUS" />
 </logger>
 
@@ -71,15 +71,15 @@
 </appender>
 
 <category name="com.kekeinfo.web.services.controller.system.ModbusListener">
-  <priority value="debug" />
-  <appender-ref ref="CONSOLE" />
+  <priority value="error" />
+  <appender-ref ref="console" />
 </category>
 <category name="com.serotonin.modbus4j">
-  <priority value="debug" />
-  <appender-ref ref="CONSOLE" />
+  <priority value="error" />
+  <appender-ref ref="console" />
 </category>
 <root>
-	<priority value="info" />
+	<priority value="error" />
 	<appender-ref ref="console" />
 </root>
 <!-- <category name="org.springframework">

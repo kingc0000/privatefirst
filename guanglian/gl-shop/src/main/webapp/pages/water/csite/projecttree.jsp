@@ -48,7 +48,7 @@ function gotoProject(pid){
 									<li<c:if test="${activePid==project.id&&activeFun=='monitor'}"> class="active"</c:if> id="paid_${project.id }" ><a href="#" onclick="gotoProject(${project.id })">实时监控</a></li>
 									<li class="needsclick <c:if test="${activePid==project.id&&activeFun=='toEdit'}"> active </c:if>"><a href="<c:url value="/water/csite/toEdit.html?cid=${project.id }"/>">项目信息</a></li>
 									<li class="sub-menu">
-										<a class="m-win-title <c:if test="${activePid==project.id&&(activeFun=='pwell'||activeFun=='dewell'||activeFun=='owell'||activeFun=='iwell'||activeFun=='dmonitor'||activeFun=='gateway'||activeFun=='dataconf'||activeFun=='warning'||activeFun=='camera')}"> active</c:if>" href="#"><span>测点管理</span></a>
+										<a class="m-win-title <c:if test="${activePid==project.id&&(activeFun=='pwell'||activeFun=='dewell'||activeFun=='owell'||activeFun=='iwell'||activeFun=='dmonitor'||activeFun=='gateway'||activeFun=='dataconf'||activeFun=='warning'||activeFun=='camera'||activeFun=='projectimg')}"> active</c:if>" href="#"><span>测点管理</span></a>
 										<ul class="sub">
 											<li class="<c:if test="${activePid==project.id&&activeFun=='pwell'}"> active</c:if>"><a  class="needsclick" href="<c:url value="/water/pwell/list.html?cid=${project.id }"/>">降水井管理</a></li>
 											<li class="<c:if test="${activePid==project.id&&activeFun=='dewell'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/dewell/list.html?cid=${project.id }"/>">疏干井管理</a></li>
@@ -59,13 +59,8 @@ function gotoProject(pid){
 											<li class="<c:if test="${activePid==project.id&&activeFun=='dataconf'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/dataconf/list.html?cid=${project.id }"/>">采集配置</a></li>
 											<li class="<c:if test="${activePid==project.id&&activeFun=='warning'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/warning/list.html?cid=${project.id }"/>">告警汇总</a></li>
 											<li class="<c:if test="${activePid==project.id&&activeFun=='camera'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/camera/plist.html?cid=${project.id }"/>">摄像头管理</a></li>
-											<li
-													class="<c:if test="${activePid==project.id&&activeFun=='camera'}"> active
-</c:if>"><a class="needsclick" href="<c:url value="/water/projectimg/list.html?cid=${project.id }"/>">图纸标记</a></li>
-											<li
-													class="<c:if
-													test="${activePid==project.id&&activeFun=='camera'}"> active
-</c:if>"><a class="needsclick" href="<c:url value="/water/camera/plist.html?cid=${project.id }"/>">图纸管理</a></li>
+											<li class="<c:if test="${activePid==project.id&&activeFun=='projectimg'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/projectimg/list.html?cid=${project.id }"/>">图纸标记</a></li>
+											
 										</ul>
 									</li>
 									<li class="<c:if test="${activePid==project.id&&activeFun=='daily'}"> active</c:if>"><a class="needsclick" href="<c:url value="/water/daily/list.html?cid=${project.id }"/>">施工日志</a></li>

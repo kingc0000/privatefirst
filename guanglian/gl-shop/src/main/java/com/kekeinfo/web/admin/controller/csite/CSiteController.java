@@ -504,6 +504,16 @@ public class CSiteController {
 				}
 				// 保存第一张图片作为标记图片（目前支持一张）
 				if (CollectionUtils.isNotEmpty(csite.getImages())) {
+					if (csite.getId() != null) {
+						Entitites<ProjectImg> projectimgs = projectImgService
+								.getListByAttributes(new String[] {"csite.id"},
+										new String[] {String.valueOf(csite.getId())}, null);
+						if (CollectionUtils.isNotEmpty(projectimgs.getEntites())) {
+							for (ProjectImg projectImg : projectimgs.getEntites()) {
+								projectImgService.delete(projectImg);
+							}
+						}
+					}
 					ProjectImg projectImg = new ProjectImg();
 					projectImg.setUrl(csite.getImages().get(0).getJpeg());
 					projectImg.setCsite(csite);

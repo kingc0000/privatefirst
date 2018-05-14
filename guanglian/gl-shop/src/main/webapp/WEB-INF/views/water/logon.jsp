@@ -161,6 +161,10 @@ $(function(){
 		//alert(apptype);
 		devicetoken=scanUtils.deviceid();
 		//alert(devicetoken);
+		var version=scanUtils.version();
+		if(version==null || version=="" ||version=='' || version!=1){
+			alert("APP已经有新的版本，请及时更新，谢谢！");
+		}
 	}
 	//确认是否提交过
 	var isSumbit="${param.login_error}";

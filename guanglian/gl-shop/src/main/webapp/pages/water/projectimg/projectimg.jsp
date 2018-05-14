@@ -45,14 +45,14 @@
         line-height: 26px;
     }
 
-    select{
+    select {
         width: 90px;
         height: 30px;
         color: #000;
         border: solid 1px #000;
-        appearance:none;
-        -moz-appearance:none;
-        -webkit-appearance:none;
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
         font-size: 15px;
         overflow: hidden;
     }
@@ -226,7 +226,7 @@
         </c:forEach>
         </c:if>
         $('#zoom-marker-img').zoomMarker({
-            src: "/files/previewbyext/${projectImgs[0].url}?ftype=",
+            src: "previewbyext/${projectImgs[0].url}?ftype=",
             rate: 0.2,
             markers: markers
         });
@@ -243,23 +243,34 @@
     var rightClickPosition;
     var welldatas;
     $(function () {
-        $.post('/water/csite/getWarning.shtml', {"pid":${pid}}, function (datas) {
+        $.post('${pageContext.request.contextPath}/water/projectimg/getWarning.shtml',
+            {"cid":${pid}}, function (datas) {
             welldatas = datas;
-            $.each(datas.pwell, function (index, pwell) {
-                $("#wellselect").append("<option value='pwell" + pwell.id + "'>" + pwell.name + "</option>");
-            })
-            $.each(datas.dewell, function (index, dwell) {
-                $("#wellselect").append("<option value='dwell" + dwell.id + "'>" + dwell.name + "</option>");
-            })
-            $.each(datas.owell, function (index, owell) {
-                $("#wellselect").append("<option value='owell" + owell.id + "'>" + owell.name + "</option>");
-            })
-            $.each(datas.iwell, function (index, iwell) {
-                $("#wellselect").append("<option value='iwell" + iwell.id + "'>" + iwell.name + "</option>");
-            })
-            $.each(datas.ewell, function (index, ewell) {
-                $("#wellselect").append("<option value='ewell" + ewell.id + "'>" + ewell.name + "</option>");
-            })
+            if (datas.pwell != undefined) {
+                $.each(datas.pwell, function (index, pwell) {
+                    $("#wellselect").append("<option value='pwell" + pwell.id + "'>" + pwell.name + "</option>");
+                })
+            }
+            if (datas.dewell != undefined) {
+                $.each(datas.dewell, function (index, dwell) {
+                    $("#wellselect").append("<option value='dwell" + dwell.id + "'>" + dwell.name + "</option>");
+                })
+            }
+            if (datas.owell != undefined) {
+                $.each(datas.owell, function (index, owell) {
+                    $("#wellselect").append("<option value='owell" + owell.id + "'>" + owell.name + "</option>");
+                })
+            }
+            if (datas.iwell != undefined) {
+                $.each(datas.iwell, function (index, iwell) {
+                    $("#wellselect").append("<option value='iwell" + iwell.id + "'>" + iwell.name + "</option>");
+                })
+            }
+            if (datas.ewell != undefined) {
+                $.each(datas.ewell, function (index, ewell) {
+                    $("#wellselect").append("<option value='ewell" + ewell.id + "'>" + ewell.name + "</option>");
+                })
+            }
         })
         $('#zoom-marker-img').on("contextmenu", function (ev) {
             var markernames = document.getElementById("markernames");
@@ -401,7 +412,7 @@
                     }
                     dialog = elem.name;
                     $(markerList).each(function (index, element) {
-                        var icontype ='';
+                        var icontype = '';
                         if (welltype == "dwell") {
                             icontype = 'dewell';
                         } else {

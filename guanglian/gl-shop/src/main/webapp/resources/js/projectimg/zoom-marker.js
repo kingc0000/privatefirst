@@ -104,6 +104,9 @@
         "zoomMarker_that" : function () {
             return that;
         },
+        "zoomMarker_dialog" : function () {
+            return dialog;
+        },
         "zoomMarker_options" : function () {
             return options;
         },

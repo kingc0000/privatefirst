@@ -8,6 +8,7 @@
 <link href='<c:url value="/resources/assets/image-cropper/main.css" />' rel="stylesheet">
 <script type="text/javascript">
 var stype='${sign.stype}';
+var locations='';
 if(stype=='0'){
 	$("#pictitle").html("到站开始要点")
 }else{
@@ -19,6 +20,7 @@ if(app==-1){
 	app = navigator.userAgent.indexOf("iOS");
 	if(app!=-1){
 		apptype='iOS';
+		window.webkit.messageHandlers.location.postMessage({});
 	}
 }else{
 	apptype='android';
@@ -91,6 +93,8 @@ if(app==-1){
 		var saddress='';
 		if(apptype=="android"){
 			saddress=scanUtils.address();
+		}else{
+			saddress=locations;
 		}
 		$('#signaddress').val(saddress);
 		var data = new FormData($('#signform')[0]);
@@ -153,5 +157,10 @@ if(app==-1){
 	}
 	function delimage(obj){
 		obj.remove();
+	}
+	function locationSuccess(str){
+		locations=str;
+	}
+	function locationFauled(){
 	}
 </script>

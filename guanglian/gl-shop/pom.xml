@@ -470,9 +470,9 @@
 			</snapshots>
 		</repository>
 		<repository>
-			<id>alimaven</id>
-	        <name>aliyun maven</name>
-	        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<id>org.jboss.repository.releases</id>
+			<name>JBoss Maven Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
@@ -489,12 +489,7 @@
             <name>Modbus Dependencies</name>
             <url>https://maven.mangoautomation.net/repository/ias-release/</url>
         </repository>
-        <repository>
-			<id>central</id>
-	        <name>Maven Repository Switchboard</name>
-	        <url>http://repo1.maven.org/maven2/</url>
-			<snapshots><enabled>false</enabled></snapshots>			
-		</repository>
+
 	</repositories>
 	<build>	
 		<filters>

@@ -161,7 +161,7 @@ $(function(){
 		if(apptype=="android"){
 			devicetoken=scanUtils.deviceid();
 			var version=scanUtils.version();
-			if(version==null || version=="" || version!=1){
+			if(version==null || version=="" ||version=='' || version!=1){
 				alert("APP已经有新的版本，请及时更新，谢谢！");
 			}
 		}else if(apptype=="iOS"){
