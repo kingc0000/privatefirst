@@ -65,6 +65,17 @@ public class DeformmonitorMarker extends KekeinfoEntity<Long, DeformmonitorMarke
     @JoinColumn(name = "PROJECTIMG_ID", nullable = false)
     private ProjectImg projectImg;
 
+    @Column(name = "WELLDEPTH", length = 20)
+    private String wellDepth;
+
+    public String getWellDepth() {
+        return wellDepth;
+    }
+
+    public void setWellDepth(String wellDepth) {
+        this.wellDepth = wellDepth;
+    }
+
     public Long getId() {
         return id;
     }

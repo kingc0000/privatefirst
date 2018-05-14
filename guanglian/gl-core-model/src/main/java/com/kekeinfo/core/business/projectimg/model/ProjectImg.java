@@ -66,23 +66,18 @@ public class ProjectImg extends KekeinfoEntity<Long, ProjectImg> {
     @JoinColumn(name = "CSITE_ID", nullable = true)
     private ConstructionSite csite;
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<DeformmonitorMarker> dmMarkers = new HashSet<DeformmonitorMarker>();
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<DewateringMarker> dwMarkers = new HashSet<DewateringMarker>();
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<InvertedWellMarker> iMarkers = new HashSet<InvertedWellMarker>();
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<ObserveWellMarker> oMarkers = new HashSet<ObserveWellMarker>();
 
-    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "projectImg")
     private Set<PumpWellMarker> pMarkers = new HashSet<PumpWellMarker>();
 

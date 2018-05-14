@@ -294,20 +294,34 @@
 	</dependencies>
 
 	<repositories>
-		
+		<!-- For testing against latest Spring snapshots -->
 		<repository>
-			<id>alimaven</id>
-	        <name>aliyun maven</name>
-	        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+			<id>org.springframework.maven.snapshot</id>
+			<name>Spring Maven Snapshot Repository</name>
+			<url>http://maven.springframework.org/snapshot</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<!-- For developing against latest Spring milestones -->
+		<repository>
+			<id>org.springframework.maven.milestone</id>
+			<name>Spring Maven Milestone Repository</name>
+			<url>http://maven.springframework.org/milestone</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
-		        <repository>
-			<id>central</id>
-	        <name>Maven Repository Switchboard</name>
-	        <url>http://repo1.maven.org/maven2/</url>
-			<snapshots><enabled>false</enabled></snapshots>			
+		<repository>
+			<id>org.jboss.repository.releases</id>
+			<name>JBoss Maven Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
 		</repository>
 	</repositories>
 

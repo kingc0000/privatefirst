@@ -38,10 +38,10 @@ import com.kekeinfo.core.constants.SchemaConstant;
 public class Project extends  KekeinfoEntity<Long, Project> implements Auditable{
 
 	/**
-	 *
+	 * 
 	 */
 	private static final long serialVersionUID = -1504710576382132978L;
-
+	
 
 	@Id
 	@Column(name = "PROJECT_ID", unique=true, nullable=false)
@@ -49,16 +49,16 @@ public class Project extends  KekeinfoEntity<Long, Project> implements Auditable
 	pkColumnValue = "PROJECT_SEQ_NEXT_VAL")
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TABLE_GEN")
 	private Long id;
-
+	 
 	public Project() {
 		// TODO Auto-generated constructor stub
-
-	}
-
+		
+	}	
+	
 	//项目名称
 	@Column(name="NAME", length=100)
 	private String name;
-
+	
 	public String getName() {
 		return name;
 	}
@@ -145,28 +145,28 @@ public class Project extends  KekeinfoEntity<Long, Project> implements Auditable
 	//联系电话
 	@Column(name = "PHONE")
 	private String phone;
-
+	
 	//住址
 	@Column(name="ADDRESS",length=1000)
 	private String address;
-
+	
 	//负责人
 	@Column(name="OWNERID")
 	private Long projectOwnerid;
-
+	
 	//省
 	@OneToOne(fetch = FetchType.EAGER, targetEntity = Zone.class)
 	@JoinColumn(name="ZONE_ID", nullable=true, updatable=true)
 	private Zone zone;
-
+	
 	//城市
 	@Column(name="CITY",length=20)
 	private String city;
-
+	
 	//备注
 	@Column(name="MEMO", length=1000)
 	private String memo;
-
+	
 	//项目类型
 	/**
 	 * -1:其他
@@ -179,28 +179,28 @@ public class Project extends  KekeinfoEntity<Long, Project> implements Auditable
 	//工程特性，在用户权限中作为二级分类，如果选择该工程特性，则工程特性下的项目都拥有权限
 	@Column(name="FEATURES",length=10)
 	private String features;
-
+	
 	//项目概述
 	@Column(name="SUMMARY")
 	@Type(type = "org.hibernate.type.StringClobType")
 	private String summary;
-
+	
 	//部门
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="DEPARTMENT_ID", nullable=false)
 	private Department department;
-
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "project")
 	private Set<Camera> camera = new LinkedHashSet<Camera>();
-
+	
 	@Embedded
 	private AuditSection auditSection = new AuditSection();
-
+	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "cproject")
 	private Set<User> cUsers = new LinkedHashSet<User>();
-
+	
 	@JsonIgnore
 	@OneToMany(fetch = FetchType.LAZY,mappedBy = "wproject")
 	private Set<User> wUsers = new LinkedHashSet<User>();
@@ -211,8 +211,8 @@ public class Project extends  KekeinfoEntity<Long, Project> implements Auditable
 	 */
 	@Transient
 	private int sstatus=-1;
-
-
+	
+	
 	@Override
 	public Long getId() {
 		// TODO Auto-generated method stub
@@ -235,7 +235,7 @@ public class Project extends  KekeinfoEntity<Long, Project> implements Auditable
 	public void setAuditSection(AuditSection audit) {
 		// TODO Auto-generated method stub
 		this.auditSection=audit;
-
+		
 	}
 
 	public Set<Camera> getCamera() {
@@ -285,5 +285,5 @@ public class Project extends  KekeinfoEntity<Long, Project> implements Auditable
 	public void setwUsers(Set<User> wUsers) {
 		this.wUsers = wUsers;
 	}
-
+	
 }
