@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="gl-shop:war">
-    <output-path>$PROJECT_DIR$/gl-shop/target</output-path>
-    <root id="archive" name="gl-shop-test.war">
-      <element id="artifact" artifact-name="gl-shop:war exploded" />
-    </root>
-  </artifact>
-</component>

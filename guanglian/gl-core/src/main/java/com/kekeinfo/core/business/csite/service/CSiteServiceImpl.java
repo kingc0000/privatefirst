@@ -397,12 +397,17 @@ public class CSiteServiceImpl extends KekeinfoEntityServiceImpl<Long, Constructi
 		//删除新的文件
 		if(StringUtils.isNotBlank(delids)){
 			String[] ids = delids.split(",");
-			for(String s:ids){
-				//对应的数据记录也要删除
-				Images img = imageService.getByName(s);
-				imageService.delete(img);
-				contentService.removeFile(FileContentType.PRODUCT_DIGITAL, s);
+			try{
+				for(String s:ids){
+					//对应的数据记录也要删除
+					Images img = imageService.getByName(s);
+					imageService.delete(img);
+					contentService.removeFile(FileContentType.PRODUCT_DIGITAL, s);
+				}
+			}catch (Exception e){
+				
 			}
+			
 		}
 		//如果项目已经结束删除相应的权限
 		if(pNodes!=null && pNodes.size()>0){
