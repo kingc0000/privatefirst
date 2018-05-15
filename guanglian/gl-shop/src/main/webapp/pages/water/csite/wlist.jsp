@@ -174,7 +174,7 @@
                     <div class="row">
                         <div class="col-xs-12 col-sm-8">
                             <div style=" width: 800px; height:500px; overflow:auto">
-                                <canvas id="canvas" width="20000" height="600"></canvas>
+                                <canvas id="canvas" width="2000" height="400"></canvas>
                             </div>
                         </div>
                     </div>
@@ -1280,7 +1280,7 @@
     //第三定义一个矩形的函数方法
     function rect(X, Y, width, height) {
         mycanvas.beginPath();
-        mycanvas.fillStyle = "#abcdef";
+        mycanvas.fillStyle = "#68ccff";
         mycanvas.rect(X, Y, width, -height);
         mycanvas.fill();
         mycanvas.closePath()
@@ -1289,13 +1289,13 @@
     //第四定义一个方法  定义矩形的具体变量以及高引入数组
     function wenrect() {
         for (var i = 0; i < len; i++) {
-            var width = 15;
-            var height = wellheight[i] * 10;
-            var X = wellX[i];
+            var width = 10;
+            var height = wellheight[i] * 5;
+            var X = wellX[i] *1.2;
             var Y = height - 10;
             rect(X, Y, width, height);
-            write(wellnames[i], wellX[i] , 10)
-            write(wellheight[i] + 'm', wellX[i] , wellheight[i] * 10)
+            write(wellnames[i], wellX[i] *1.2, 10)
+            write(wellheight[i] + 'm', wellX[i] *1.2, wellheight[i] * 5)
         }
     }
 
