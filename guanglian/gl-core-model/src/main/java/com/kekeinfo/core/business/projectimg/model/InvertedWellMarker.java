@@ -1,5 +1,7 @@
 package com.kekeinfo.core.business.projectimg.model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -39,12 +41,12 @@ public class InvertedWellMarker extends KekeinfoEntity<Long, InvertedWellMarker>
     private Long id;
 
     // 标记X坐标
-    @Column(name = "MARKERX", length = 20)
-    private String markerX;
+    @Column(name = "MARKERX",precision=12, scale=3)
+    private BigDecimal markerX;
 
     // 标记Y坐标
-    @Column(name = "MARKERY", length = 20)
-    private String markerY;
+    @Column(name = "MARKERY",precision=12, scale=3)
+    private BigDecimal markerY;
 
     // 标记名称（保留）
     @Column(name = "NAME", length = 100)
@@ -66,7 +68,30 @@ public class InvertedWellMarker extends KekeinfoEntity<Long, InvertedWellMarker>
 
     @Column(name = "WELLDEPTH", length = 20)
     private String wellDepth;
+    // 位图X坐标
 
+    @Column(name="IMGX",precision=12, scale=3)
+    private BigDecimal imgX;
+
+    // 位图Y坐标
+    @Column(name = "IMGY",precision=12, scale=3)
+    private BigDecimal imgY;
+
+    public BigDecimal getImgX() {
+        return imgX;
+    }
+
+    public void setImgX(BigDecimal imgX) {
+        this.imgX = imgX;
+    }
+
+    public BigDecimal getImgY() {
+        return imgY;
+    }
+
+    public void setImgY(BigDecimal imgY) {
+        this.imgY = imgY;
+    }
     public String getWellDepth() {
         return wellDepth;
     }
@@ -91,19 +116,19 @@ public class InvertedWellMarker extends KekeinfoEntity<Long, InvertedWellMarker>
         this.id = id;
     }
 
-    public String getMarkerX() {
+    public BigDecimal getMarkerX() {
         return markerX;
     }
 
-    public void setMarkerX(String markerX) {
+    public void setMarkerX(BigDecimal markerX) {
         this.markerX = markerX;
     }
 
-    public String getMarkerY() {
+    public BigDecimal getMarkerY() {
         return markerY;
     }
 
-    public void setMarkerY(String markerY) {
+    public void setMarkerY(BigDecimal markerY) {
         this.markerY = markerY;
     }
 

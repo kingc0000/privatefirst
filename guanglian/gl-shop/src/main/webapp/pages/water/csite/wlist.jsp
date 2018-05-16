@@ -1202,62 +1202,129 @@
     }
 
     function getWellProfile() {
-        wellheight = [];
+        welldepth = [];
         wellX = [];
         wellnames = []
-        $.post('${pageContext.request.contextPath}/water/projectimg/getwellprofile.shtml',{"cid":pid},
-            function(data){
-            var response = data[0];
-            if(response!=null && response!=undefined){
-                console.log(response)
-                if (response.dmMarkers!= undefined && response.dmMarkers.length) {
-                    $.each(response.dmMarkers, function (index, elem) {
-                        wellnames.push(elem.name);
-                        wellX.push(elem.markerX);
-                        wellheight.push(elem.wellDepth)
-                    })
+        var elems = []
+        $.post('${pageContext.request.contextPath}/water/projectimg/getwellprofile.shtml', {"cid": pid},
+            function (data) {
+                var response = data[0];
+                if (response != null && response != undefined) {
+                    console.log(response)
+                    if (response.dmMarkers != undefined && response.dmMarkers.length) {
+                        $.each(response.dmMarkers, function (index, elem) {
+                            wellnames.push(elem.name);
+                            wellX.push(elem.markerX);
+                            welldepth.push(elem.wellDepth)
+                            var element = {
+                                name: elem.name,
+                                position: elem.markerX,
+                                imgx: elem.imgX,
+                                welldepth: elem.wellDepth
+                            }
+                            elems.push(element)
+                        })
+                    }
+                    if (response.dwMarkers != undefined && response.dwMarkers.length) {
+                        $.each(response.dwMarkers, function (index, elem) {
+                            wellnames.push(elem.name);
+                            wellX.push(elem.markerX);
+                            welldepth.push(elem.wellDepth)
+                            var element = {
+                                name: elem.name,
+                                position: elem.markerX,
+                                imgx: elem.imgX,
+                                welldepth: elem.wellDepth
+                            }
+                            elems.push(element)
+                        })
+                    }
+                    if (response.iMarkers != undefined && response.iMarkers.length) {
+                        $.each(response.iMarkers, function (index, elem) {
+                            wellnames.push(elem.name);
+                            wellX.push(elem.markerX);
+                            welldepth.push(elem.wellDepth)
+                            var element = {
+                                name: elem.name,
+                                position: elem.markerX,
+                                imgx: elem.imgX,
+                                welldepth: elem.wellDepth
+                            }
+                            elems.push(element)
+                        })
+                    }
+                    if (response.oMarkers != undefined && response.oMarkers.length) {
+                        $.each(response.oMarkers, function (index, elem) {
+                            wellnames.push(elem.name);
+                            wellX.push(elem.markerX);
+                            welldepth.push(elem.wellDepth)
+                            var element = {
+                                name: elem.name,
+                                position: elem.markerX,
+                                imgx: elem.imgX,
+                                welldepth: elem.wellDepth
+                            }
+                            elems.push(element)
+                        })
+                    }
+                    if (response.pMarkers != undefined && response.pMarkers.length) {
+                        $.each(response.pMarkers, function (index, elem) {
+                            wellnames.push(elem.name);
+                            wellX.push(elem.markerX);
+                            welldepth.push(elem.wellDepth)
+                            var element = {
+                                name: elem.name,
+                                position: elem.markerX,
+                                imgx: elem.imgX,
+                                welldepth: elem.wellDepth
+                            }
+                            elems.push(element)
+                        })
+                    }
+                    len = wellX.length;
+                    for (var i = 0; i < elems.length; i++) {
+                        for (var j = 1; j < elems.length - i; j++) {
+                            if (elems[j - 1].position > elems[j].position) {//前面的数字大于后面的数字就交换
+                                //交换a[j-1]和a[j]
+                                var temp;
+                                temp = elems[j - 1];
+                                elems[j - 1] = elems[j];
+                                elems[j] = temp;
+                            }
+                        }
+                    }
+                    if (elems.length > 0) {
+                        line(0, elems[0].welldepth * 2.5, elems[0].position * 1.2, elems[0].welldepth * 2.5)
+                        write(((elems[0].imgx - 0) * 0.2).toFixed(2) + "%", elems[0].position * 1.2 * 0.4,
+                            elems[0].welldepth * 2.5+19)
+                        if (elems.length > 1) {
+                            for (var i = 1; i < elems.length; i++) {
+                                line(elems[i-1].position * 1.2 +1, elems[i].welldepth * 2.5, elems[i].position * 1.2,
+                                    elems[i].welldepth * 2.5)
+                                var start = ((elems[i].imgx - elems[i-1].imgx) /5).toFixed(2) + "%";
+                                var position = elems[i].position;
+                                var position1 = elems[i-1].position;
+                                var ox = ((position - position1) * 0.4 + position1) * 1.2 ;
+                                var oy = elems[i].welldepth * 2.5 +19;
+                                write(start, ox , oy)
+                            }
+                        }
+                        wenrect()
+                    }
+                    $("#wellmodal").modal('show');
+                } else {
+                    toastr.error('获取数据失败');
                 }
-                if (response.dwMarkers!= undefined && response.dwMarkers.length) {
-                    $.each(response.dwMarkers, function (index, elem) {
-                        wellnames.push(elem.name);
-                        wellX.push(elem.markerX);
-                        wellheight.push(elem.wellDepth)
-                    })
-                }
-                if (response.iMarkers!= undefined && response.iMarkers.length) {
-                    $.each(response.iMarkers, function (index, elem) {
-                        wellnames.push(elem.name);
-                        wellX.push(elem.markerX);
-                        wellheight.push(elem.wellDepth)
-                    })
-                }
-                if (response.oMarkers!= undefined && response.oMarkers.length) {
-                    $.each(response.oMarkers, function (index, elem) {
-                        wellnames.push(elem.name);
-                        wellX.push(elem.markerX);
-                        wellheight.push(elem.wellDepth)
-                    })
-                }
-                if (response.pMarkers!= undefined && response.pMarkers.length) {
-                    $.each(response.pMarkers, function (index, elem) {
-                        wellnames.push(elem.name);
-                        wellX.push(elem.markerX);
-                        wellheight.push(elem.wellDepth)
-                    })
-                }
-                len = wellX.length;
-                wenrect();
-                $("#wellmodal").modal('show');
-            }else{
-                toastr.error('获取数据失败');
-            }
+                $('#loading').hide();
+            }).error(function () {
             $('#loading').hide();
-        }).error(function() {$('#loading').hide();toastr.error('获取数据失败'); });
+            toastr.error('获取数据失败');
+        });
     }
 
     var ocanvas = document.getElementById("canvas");
     var mycanvas = ocanvas.getContext("2d");
-    var wellheight = [50];
+    var welldepth = [50];
     var wellX = [20];
     var wellnames = ["J222"]
     var len = wellX.length
@@ -1265,8 +1332,8 @@
     //第一先定义一个画线的函数方法    画两条线
     function line(aX, aY, bX, bY) {//开始和结束的横坐标  开始和结束的纵坐标
         mycanvas.beginPath();
-        mycanvas.moveTo(aX, aY);
-        mycanvas.lineTo(bX, bY);
+        mycanvas.moveTo(aX, aY + 20);
+        mycanvas.lineTo(bX, bY + 20);
         mycanvas.stroke();
 
     }
@@ -1290,12 +1357,12 @@
     function wenrect() {
         for (var i = 0; i < len; i++) {
             var width = 10;
-            var height = wellheight[i] * 5;
-            var X = wellX[i] *1.2;
-            var Y = height - 10;
-            rect(X, Y, width, height);
-            write(wellnames[i], wellX[i] *1.2, 10)
-            write(wellheight[i] + 'm', wellX[i] *1.2, wellheight[i] * 5)
+            var height = welldepth[i] * 5;
+            var X = wellX[i] * 1.2;
+            var Y = height;
+            rect(X, Y + 20, width, height);
+            write(wellnames[i], wellX[i] * 1.2, 10)
+            write(welldepth[i] + 'm', wellX[i] * 1.2, welldepth[i] * 5)
         }
     }
 

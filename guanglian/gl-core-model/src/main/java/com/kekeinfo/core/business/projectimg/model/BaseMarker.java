@@ -1,16 +1,23 @@
 package com.kekeinfo.core.business.projectimg.model;
 
+import java.math.BigDecimal;
+
 /**
  * Created by WangChong on 2018/5/10.
  */
 public class BaseMarker {
 
     private Long id;
+
     private Long wellid;
 
-    private String markerX;
+    private BigDecimal markerX;
 
-    private String markerY;
+    private BigDecimal markerY;
+
+    private BigDecimal imgX;
+
+    private BigDecimal imgY;
 
     private String name;
 
@@ -19,6 +26,22 @@ public class BaseMarker {
     private BaseWell well;
 
     private BaseProjecImg projectImg;
+
+    public BigDecimal getImgX() {
+        return imgX;
+    }
+
+    public void setImgX(BigDecimal imgX) {
+        this.imgX = imgX;
+    }
+
+    public BigDecimal getImgY() {
+        return imgY;
+    }
+
+    public void setImgY(BigDecimal imgY) {
+        this.imgY = imgY;
+    }
 
     public Long getWellid() {
         return wellid;
@@ -36,19 +59,19 @@ public class BaseMarker {
         this.id = id;
     }
 
-    public String getMarkerX() {
+    public BigDecimal getMarkerX() {
         return markerX;
     }
 
-    public void setMarkerX(String markerX) {
+    public void setMarkerX(BigDecimal markerX) {
         this.markerX = markerX;
     }
 
-    public String getMarkerY() {
+    public BigDecimal getMarkerY() {
         return markerY;
     }
 
-    public void setMarkerY(String markerY) {
+    public void setMarkerY(BigDecimal markerY) {
         this.markerY = markerY;
     }
 

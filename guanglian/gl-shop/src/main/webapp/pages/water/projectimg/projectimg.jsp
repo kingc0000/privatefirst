@@ -374,7 +374,9 @@
                 markerType: welltype,
                 name: name,
                 well: {id: id},
-                projectImg: {id:${projectImgs[0].id}}
+                projectImg: {id:${projectImgs[0].id}},
+                imgX : rightClickPageX,
+                imgY : rightClickPageY,
             }
             var dialog = '';
             var icon = 'well-icon ';
